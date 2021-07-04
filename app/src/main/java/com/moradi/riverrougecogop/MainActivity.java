@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
     ListView listView;
     ArrayList<VideoDetails> videoDetailsArrayList;
     MyCustomAdapter myCustomAdapter;
-    String url ="https://www.googleapis.com/youtube/v3/search?key=AIzaSyB-QfXP8DmpRFW-j9UMkB9namnQM76OcYM&channelId=UCUhcJn2pYIyPa7Yp1AzKOkA&part=snippet,id&order=date&maxResults=9";
+    String url ="http://www.google.com";
 
     @SuppressLint("SetJavaScriptEnabled")
     @Override
@@ -112,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void join1(View view) {
-        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.google.com"));
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://bit.ly/RRCOGOP"));
         startActivity(browserIntent);
     }
     public void fbbtn(View view) {
@@ -143,8 +143,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void biblebtn(View view) {
-        Intent announcements = new Intent(view.getContext(), Bible.class);
-        startActivityForResult(announcements, 0);
+        Intent launchIntent = getPackageManager().getLaunchIntentForPackage("com.google.android.youtube");
+        if (launchIntent != null) {
+            startActivity(launchIntent);
+        } else {
+            Toast.makeText(MainActivity.this, "There is no package available in android", Toast.LENGTH_LONG).show();
+        }
     }
 
 }
