@@ -21,4 +21,5 @@
     <string name="layout_bible_nkjv_xml">layoutbible_nkjv.xml</string>
     <string name="welcome_to_my_new_video">Welcome to my new video</string>
     <string name="no_new_notifications">No New Notifications!</string>
+    <string name="announcements">Announcements</string>
 </resources>

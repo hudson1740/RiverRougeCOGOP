@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.RemoteViews;
 import android.widget.TextView;
 
@@ -16,6 +18,8 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.moradi.riverrougecogop.R;
+
+import java.util.ArrayList;
 
 public class NotificationsFragment extends Fragment {
 
@@ -37,3 +41,4 @@ public class NotificationsFragment extends Fragment {
         return root;
     }
 }
+

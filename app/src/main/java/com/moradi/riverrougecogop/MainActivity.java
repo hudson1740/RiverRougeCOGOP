@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.webkit.WebView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -43,7 +44,6 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<VideoDetails> videoDetailsArrayList;
     MyCustomAdapter myCustomAdapter;
     String url ="http://www.google.com";
-
     @SuppressLint("SetJavaScriptEnabled")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -150,5 +150,4 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(MainActivity.this, "There is no package available in android", Toast.LENGTH_LONG).show();
         }
     }
-
 }
