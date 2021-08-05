@@ -154,7 +154,8 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:onClick="join1"/>
 
                 <TextView
                     android:id="@+id/textView1"
@@ -203,7 +204,8 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:onClick="announcementsbtn"/>
 
                 <TextView
                     android:id="@+id/textView20"
@@ -264,7 +266,8 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:onClick="biblebtn"/>
 
                 <TextView
                     android:id="@+id/textView21"
@@ -312,7 +315,8 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:onClick="locationbtn"/>
 
                 <TextView
                     android:id="@+id/textView22"
@@ -420,10 +424,12 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:onClick="notesbtn"/>
 
                 <TextView
                     android:id="@+id/textView4"
+                    android:onClick="notesbtn"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"

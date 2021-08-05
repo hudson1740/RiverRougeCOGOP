@@ -142,11 +142,18 @@ public class MainActivity extends AppCompatActivity {
         startActivityForResult(announcements, 0);
     }
 
+    public void notesbtn(View view) {
+        Intent notesintent = new Intent(view.getContext(), NotesMainActivity.class);
+        startActivityForResult(notesintent, 0);
+
+    }
+
     public void biblebtn(View view) {
-        Intent launchIntent = getPackageManager().getLaunchIntentForPackage("com.google.android.youtube");
+        Intent launchIntent = getPackageManager().getLaunchIntentForPackage("com.android.chrome");
         if (launchIntent != null) {
             startActivity(launchIntent);
-        } else {
+        } else if (launchIntent == null)
+            {
             Toast.makeText(MainActivity.this, "There is no package available in android", Toast.LENGTH_LONG).show();
         }
     }

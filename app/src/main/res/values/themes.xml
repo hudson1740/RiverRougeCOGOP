@@ -34,6 +34,7 @@
     </style>
 
     <style name="Theme.RiverRougeCOGOP.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
     <style name="Theme.RiverRougeCOGOP.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 
