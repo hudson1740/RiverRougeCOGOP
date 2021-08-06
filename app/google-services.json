@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "539909440904",
-    "project_id": "riverrougecogop-c307f",
-    "storage_bucket": "riverrougecogop-c307f.appspot.com"
+    "project_number": "511707319970",
+    "project_id": "riverrougecogop-fc2ba",
+    "storage_bucket": "riverrougecogop-fc2ba.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:539909440904:android:6f29e9ec00526865da663d",
+        "mobilesdk_app_id": "1:511707319970:android:54f883dedaf8101dfe91fb",
         "android_client_info": {
           "package_name": "com.cogop.riverrougecogop"
         }
       },
       "oauth_client": [
         {
-          "client_id": "539909440904-6pg39u6kru1dcrterl2qc4oqeh2pa5oa.apps.googleusercontent.com",
+          "client_id": "511707319970-fn1cv0bm2b6djrnegbt8im4n9htbf250.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBew0ZLlxy0whs0hfkmOellyLscQvVKGzM"
+          "current_key": "AIzaSyB95htu89MvSaaYNlu86ScqxvQsVTdfWGc"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "539909440904-6pg39u6kru1dcrterl2qc4oqeh2pa5oa.apps.googleusercontent.com",
+              "client_id": "511707319970-fn1cv0bm2b6djrnegbt8im4n9htbf250.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
