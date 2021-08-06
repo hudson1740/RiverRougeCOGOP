@@ -59,9 +59,9 @@ NotesAdapter(Context context,List<Note> notes){
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent i = new Intent(v.getContext(),Details.class);
-                    i.putExtra("ID",notes.get(getAdapterPosition()).getID());
-                    v.getContext().startActivity(i);
+                        Intent i = new Intent(v.getContext(), Details.class);
+                        i.putExtra("ID", notes.get(getAdapterPosition()).getID());
+                        v.getContext().startActivity(i);
                 }
             });
         }

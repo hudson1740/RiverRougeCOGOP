@@ -87,7 +87,8 @@
                 android:layout_marginBottom="8dp"
                 android:text="profile"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                android:onClick="profile"/>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/editProfileB"
@@ -98,7 +99,8 @@
                 android:text="Settings"
                 android:textColor="@color/green_500"
                 app:layout_constraintBottom_toBottomOf="@+id/todoB"
-                app:layout_constraintStart_toEndOf="@+id/todoB" />
+                app:layout_constraintStart_toEndOf="@+id/todoB"
+                android:onClick="settings"/>
 
             <ImageButton
                 android:id="@+id/profileB"
@@ -377,7 +379,8 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:onClick="help"/>
 
                 <TextView
                     android:id="@+id/textView23"
@@ -393,7 +396,8 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/image_view23" />
+                    app:layout_constraintTop_toBottomOf="@+id/image_view23"
+                    android:onClick="help"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

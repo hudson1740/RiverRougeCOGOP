@@ -145,9 +145,17 @@ public class MainActivity extends AppCompatActivity {
     public void notesbtn(View view) {
         Intent notesintent = new Intent(view.getContext(), NotesMainActivity.class);
         startActivityForResult(notesintent, 0);
-
     }
-
+    public void settings(View view) {
+        Intent settingsintent = new Intent(view.getContext(), SettingsActivity.class);
+        startActivityForResult(settingsintent, 0);
+    }
+    public void help(View view) {
+        Toast.makeText(MainActivity.this, "This option is under development, please look for upcoming updates", Toast.LENGTH_LONG).show();
+    }
+    public void profile(View view){
+        Toast.makeText(MainActivity.this, "This option is under development, please look for upcoming updates", Toast.LENGTH_LONG).show();
+    }
     public void biblebtn(View view) {
         Intent launchIntent = getPackageManager().getLaunchIntentForPackage("com.android.chrome");
         if (launchIntent != null) {

@@ -14,7 +14,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.RiverRougeCOGOP">
-        <activity android:name=".Edit"></activity>
+        <activity
+            android:name=".SettingsActivity"
+            android:exported="true"
+            android:label="@string/title_activity_settings" />
+        <activity android:name=".Edit" />
         <activity
             android:name=".Details"
             android:label="@string/title_activity_details"

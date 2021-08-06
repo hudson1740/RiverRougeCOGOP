@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "539909440904",
+    "project_id": "riverrougecogop-c307f",
+    "storage_bucket": "riverrougecogop-c307f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:539909440904:android:6f29e9ec00526865da663d",
+        "android_client_info": {
+          "package_name": "com.moradi.riverrougecogop"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "539909440904-6pg39u6kru1dcrterl2qc4oqeh2pa5oa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBew0ZLlxy0whs0hfkmOellyLscQvVKGzM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "539909440904-6pg39u6kru1dcrterl2qc4oqeh2pa5oa.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
