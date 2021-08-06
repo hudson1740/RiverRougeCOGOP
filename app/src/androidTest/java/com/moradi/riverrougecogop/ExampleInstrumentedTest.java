@@ -1,4 +1,4 @@
-package com.moradi.riverrougecogop;
+package com.cogop.riverrougecogop;
 
 import android.content.Context;
 
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("com.moradi.riverrougecogop", appContext.getPackageName());
+        assertEquals("com.cogop.riverrougecogop", appContext.getPackageName());
     }
 }

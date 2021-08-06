@@ -15,7 +15,7 @@ android {
     }
 
         defaultConfig {
-        applicationId "com.moradi.riverrougecogop"
+        applicationId "com.cogop.riverrougecogop"
         minSdkVersion 21
         targetSdkVersion 30
         versionCode 1

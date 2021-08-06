@@ -1,4 +1,4 @@
-package com.moradi.riverrougecogop;
+package com.cogop.riverrougecogop;
 
 import org.junit.Test;
 
