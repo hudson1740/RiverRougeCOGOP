@@ -3,6 +3,7 @@ package com.moradi.riverrougecogop;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -17,6 +18,7 @@ public class Announcements extends AppCompatActivity {
     ListView listView3;
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.announcements_activity);
 
         //Announcements list in Fragment_notifications

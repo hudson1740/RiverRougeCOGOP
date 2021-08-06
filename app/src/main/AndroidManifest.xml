@@ -15,6 +15,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RiverRougeCOGOP">
         <activity
+            android:name=".help"
+            android:exported="true"
+            android:label="@string/title_activity_help"
+            android:theme="@style/Theme.RiverRougeCOGOP.NoActionBar" />
+        <activity
             android:name=".SettingsActivity"
             android:exported="true"
             android:label="@string/title_activity_settings" />

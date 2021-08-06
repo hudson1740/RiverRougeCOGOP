@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 <androidx.constraintlayout.widget.ConstraintLayout
-    android:background="?attr/bgColor"
+    android:background="@color/black1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/text_dashboard"
@@ -52,7 +52,8 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="?attr/bgColor">
 
             <TextView
                 android:id="@+id/textView2"
@@ -145,7 +146,8 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:background="?attr/bgColor">
 
                 <ImageView
                     android:id="@+id/image_view1"
@@ -195,7 +197,8 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:background="?attr/bgColor">
 
                 <ImageView
                     android:id="@+id/image_view20"
@@ -257,7 +260,8 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:background="?attr/bgColor">
 
                 <ImageView
                     android:id="@+id/image_view21"
@@ -306,7 +310,8 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:background="?attr/bgColor">
 
                 <ImageView
                     android:id="@+id/image_view22"
@@ -368,7 +373,8 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:background="?attr/bgColor">
 
                 <ImageView
                     android:id="@+id/image_view23"
@@ -417,7 +423,8 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:background="?attr/bgColor">
 
                 <ImageView
                     android:id="@+id/image_view"
@@ -485,6 +492,7 @@
             android:onClick="instabtn"
             android:background="@drawable/ic_instagramround"
             android:layout_margin="5dp"/>
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

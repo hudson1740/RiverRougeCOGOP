@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.webkit.WebView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -24,6 +25,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.errorprone.annotations.Var;
+import com.google.rpc.Help;
 import com.moradi.riverrougecogop.adapter.MyCustomAdapter;
 import com.moradi.riverrougecogop.model.VideoDetails;
 import com.moradi.riverrougecogop.ui.home.HomeFragment;
@@ -43,16 +46,18 @@ public class MainActivity extends AppCompatActivity {
     ListView listView;
     ArrayList<VideoDetails> videoDetailsArrayList;
     MyCustomAdapter myCustomAdapter;
-    String url ="http://www.google.com";
+    String url = "http://www.google.com";
+
     @SuppressLint("SetJavaScriptEnabled")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTheme(R.style.LightTheme);
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.nav_activity_main);
         listView = (ListView) findViewById(R.id.listview1);
         videoDetailsArrayList = new ArrayList<>();
-        myCustomAdapter = new MyCustomAdapter(MainActivity.this,videoDetailsArrayList);
+        myCustomAdapter = new MyCustomAdapter(MainActivity.this, videoDetailsArrayList);
         displayVideos();
 
         BottomNavigationView navView = findViewById(R.id.nav_view);
@@ -115,18 +120,22 @@ public class MainActivity extends AppCompatActivity {
         Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://bit.ly/RRCOGOP"));
         startActivity(browserIntent);
     }
+
     public void fbbtn(View view) {
         Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/RiverRougeCOGOP"));
         startActivity(browserIntent);
     }
+
     public void twitterbtn(View view) {
         Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.twitter.com/RiverRougeCOGOP"));
         startActivity(browserIntent);
     }
+
     public void instabtn(View view) {
         Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.instagram.com/RiverRougeCOGOP"));
         startActivity(browserIntent);
     }
+
     public void locationbtn(View view) {
         Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://goo.gl/maps/4vFb2BirR8drRxn3A"));
         startActivity(browserIntent);
@@ -146,23 +155,30 @@ public class MainActivity extends AppCompatActivity {
         Intent notesintent = new Intent(view.getContext(), NotesMainActivity.class);
         startActivityForResult(notesintent, 0);
     }
+
     public void settings(View view) {
         Intent settingsintent = new Intent(view.getContext(), SettingsActivity.class);
         startActivityForResult(settingsintent, 0);
     }
+
     public void help(View view) {
+            Toast.makeText(MainActivity.this, "This option is under development, please look for upcoming updates", Toast.LENGTH_LONG).show();
+    }
+
+    public void profile(View view) {
         Toast.makeText(MainActivity.this, "This option is under development, please look for upcoming updates", Toast.LENGTH_LONG).show();
     }
-    public void profile(View view){
-        Toast.makeText(MainActivity.this, "This option is under development, please look for upcoming updates", Toast.LENGTH_LONG).show();
-    }
+
     public void biblebtn(View view) {
-        Intent launchIntent = getPackageManager().getLaunchIntentForPackage("com.android.chrome");
-        if (launchIntent != null) {
-            startActivity(launchIntent);
-        } else if (launchIntent == null)
-            {
+        Intent bibleintent = getPackageManager().getLaunchIntentForPackage("com.android.chrome");
+        if (bibleintent != null) {
+            startActivity(bibleintent);
+        } else {
             Toast.makeText(MainActivity.this, "There is no package available in android", Toast.LENGTH_LONG).show();
         }
+    }
+    @Override
+    protected void onNightModeChanged(int mode) {
+        super.onNightModeChanged(mode);
     }
 }
