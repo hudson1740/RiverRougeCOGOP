@@ -13,5 +13,10 @@
     <color name="red">#bb0005</color>
     <color name="gray">#cfcacb</color>
     <color name="black1">#242120</color>
+    <color name="lightred">#ec5858</color>
+    <color name="darkred">#89100f</color>
+    <color name="superdarkred">#4e0003</color>
+    <color name="lime">#0af52d</color>
+
 
 </resources>

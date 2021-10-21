@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 <androidx.constraintlayout.widget.ConstraintLayout
-    android:background="@color/black1"
+    android:background="@color/darkred"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/text_dashboard"
@@ -147,7 +147,8 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="?attr/bgColor">
+                android:background="@drawable/shadowcolor"
+                >
 
                 <ImageView
                     android:id="@+id/image_view1"
@@ -159,22 +160,23 @@
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    android:onClick="join1"/>
+                    android:onClick="join1"
+                    />
 
                 <TextView
                     android:id="@+id/textView1"
-                    android:onClick="join1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
+                    android:onClick="join1"
                     android:text="Join Service"
                     android:textAllCaps="true"
-                    android:textColor="@color/green_500"
+                    android:textColor="@color/lime"
                     android:textSize="14sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintHorizontal_bias="0.6"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/image_view1"
                     tools:ignore="OnClick" />
@@ -198,7 +200,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="?attr/bgColor">
+                android:background="@drawable/shadowcolor">
 
                 <ImageView
                     android:id="@+id/image_view20"
@@ -219,7 +221,7 @@
                     android:gravity="center"
                     android:text="Announcements"
                     android:textAllCaps="true"
-                    android:textColor="@color/green_500"
+                    android:textColor="@color/lime"
                     android:textSize="14sp"
                     android:textStyle="bold"
                     android:onClick="announcementsbtn"
@@ -261,7 +263,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="?attr/bgColor">
+                android:background="@drawable/shadowcolor">
 
                 <ImageView
                     android:id="@+id/image_view21"
@@ -282,7 +284,7 @@
                     android:gravity="center"
                     android:text="Bible"
                     android:textAllCaps="true"
-                    android:textColor="@color/green_500"
+                    android:textColor="@color/lime"
                     android:textSize="14sp"
                     android:textStyle="bold"
                     android:onClick="biblebtn"
@@ -311,7 +313,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="?attr/bgColor">
+                android:background="@drawable/shadowcolor">
 
                 <ImageView
                     android:id="@+id/image_view22"
@@ -332,7 +334,7 @@
                     android:gravity="center"
                     android:text="Location"
                     android:textAllCaps="true"
-                    android:textColor="@color/green_500"
+                    android:textColor="@color/lime"
                     android:textSize="14sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -374,7 +376,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="?attr/bgColor">
+                android:background="@drawable/shadowcolor">
 
                 <ImageView
                     android:id="@+id/image_view23"
@@ -395,7 +397,7 @@
                     android:gravity="center"
                     android:text="HELP"
                     android:textAllCaps="true"
-                    android:textColor="@color/green_500"
+                    android:textColor="@color/lime"
                     android:textSize="14sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -424,7 +426,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="?attr/bgColor">
+                android:background="@drawable/shadowcolor">
 
                 <ImageView
                     android:id="@+id/image_view"
@@ -446,7 +448,7 @@
                     android:gravity="center"
                     android:text="Notes"
                     android:textAllCaps="true"
-                    android:textColor="@color/green_500"
+                    android:textColor="@color/lime"
                     android:textSize="14sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -460,6 +462,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linearLayout4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
@@ -492,7 +495,6 @@
             android:onClick="instabtn"
             android:background="@drawable/ic_instagramround"
             android:layout_margin="5dp"/>
-
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
