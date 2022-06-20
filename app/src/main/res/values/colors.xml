@@ -17,6 +17,6 @@
     <color name="darkred">#89100f</color>
     <color name="superdarkred">#4e0003</color>
     <color name="lime">#0af52d</color>
-
+    <color name="trans">#ffffff</color>
 
 </resources>

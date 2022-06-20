@@ -2,6 +2,8 @@
     <!-- Base application theme. -->
 
     <style name="Theme.RiverRougeCOGOP" parent="Theme.MaterialComponents.DayNight">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
         <!-- Primary brand color. -->
         <item name="android:windowNoTitle">true</item>
         <item name="colorPrimary">@color/purple_500</item>
@@ -39,6 +41,7 @@
     <style name="Theme.RiverRougeCOGOP.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.RiverRougeCOGOP.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
 
 
 </resources>
