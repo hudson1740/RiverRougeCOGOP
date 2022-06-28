@@ -34,7 +34,7 @@
         android:letterSpacing="0.025"
         android:text="Church of God of Prophecy"
         android:textColor="@color/white"
-        android:textSize="22sp"
+        android:textSize="23sp"
         android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -83,26 +83,26 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/todoB"
+                android:id="@+id/helpButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginBottom="8dp"
-                android:text="profile"
+                android:text="Help"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 android:onClick="profile"/>
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/editProfileB"
+                android:id="@+id/settingsButton"
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:text="Settings"
                 android:textColor="@color/green_500"
-                app:layout_constraintBottom_toBottomOf="@+id/todoB"
-                app:layout_constraintStart_toEndOf="@+id/todoB"
+                app:layout_constraintBottom_toBottomOf="@+id/helpButton"
+                app:layout_constraintStart_toEndOf="@+id/helpButton"
                 android:onClick="settings"/>
 
             <ImageButton
@@ -381,11 +381,11 @@
                 android:background="@drawable/shadowcolor">
 
                 <ImageView
-                    android:id="@+id/image_view23"
+                    android:id="@+id/todayImage"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_baseline_help_24"
-                    app:layout_constraintBottom_toTopOf="@+id/textView23"
+                    android:src="@drawable/ic_today"
+                    app:layout_constraintBottom_toTopOf="@+id/LiveService"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
@@ -393,11 +393,11 @@
                     android:onClick="help"/>
 
                 <TextView
-                    android:id="@+id/textView23"
+                    android:id="@+id/LiveService"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="HELP"
+                    android:text="Today's Service"
                     android:textAllCaps="true"
                     android:textColor="@color/lime"
                     android:textSize="14sp"
@@ -406,7 +406,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/image_view23"
+                    app:layout_constraintTop_toBottomOf="@+id/todayImage"
                     android:onClick="help"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
