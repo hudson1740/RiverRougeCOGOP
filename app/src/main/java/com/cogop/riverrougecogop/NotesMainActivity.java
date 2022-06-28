@@ -52,7 +52,7 @@ public class NotesMainActivity extends AppCompatActivity {
         if(item.getItemId() == R.id.add){
             Intent i = new Intent(this, AddNote.class);
             startActivity(i);
-            Toast.makeText(this, "add button is Clicked", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Add Note", Toast.LENGTH_SHORT).show();
         }
         return super.onOptionsItemSelected(item);
     }
