@@ -1,7 +1,12 @@
 package com.cogop.riverrougecogop;
 
 import android.annotation.SuppressLint;
+import android.content.ActivityNotFoundException;
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -63,20 +68,20 @@ public class MainActivity extends AppCompatActivity {
         myCustomAdapter = new MyCustomAdapter(MainActivity.this, videoDetailsArrayList);
         displayVideos();
 
-    //Lower Navigation bar containing Home,Dashboard, & Notifications ---------------------------//
+        //Lower Navigation bar containing Home,Dashboard, & Notifications ---------------------------//
         BottomNavigationView navView = findViewById(R.id.nav_view);
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-        R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications)
-         .build();
+                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications)
+                .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
 
-    //NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
+        //NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
 
-    //Tells the app too start on Dashboard instead of "Home"
+        //Tells the app too start on Dashboard instead of "Home"
         navView.getMenu().getItem(1).setChecked(true);
         navView.setSelectedItemId(R.id.navigation_dashboard);
-}
+    }
 
     private void displayVideos() {
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
@@ -112,16 +117,15 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }, new Response.ErrorListener() {
-    @Override
-        public void onErrorResponse(VolleyError error) {
-        Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
-    }
-    });
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
         requestQueue.add(stringRequest);
     }
 
-// Dashboard Button Actions ----------------------------------------------------------------------//
-
+    // Dashboard Button Actions ----------------------------------------------------------------------//
     public void join1(View view) {
         Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://bit.ly/RRCOGOP"));
         startActivity(browserIntent);
@@ -167,16 +171,19 @@ public class MainActivity extends AppCompatActivity {
         startActivityForResult(settingsintent, 0);
     }
 
+    public void help(View view) {
+    }
+
     public void profile(View view) {
         Toast.makeText(MainActivity.this, "This option is under development, please look for upcoming updates", Toast.LENGTH_LONG).show();
     }
 
-    public void biblebtn(View view) {
-        Intent bibleintent = getPackageManager().getLaunchIntentForPackage("com.android.chrome");
-        if (bibleintent != null) {
-            startActivity(bibleintent);
-        } else {
-            Toast.makeText(MainActivity.this, "There is no package available in android", Toast.LENGTH_LONG).show();
+    public void biblebtn(View view,Context context) {
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.setComponent(new ComponentName("com.android.chrome", "Class_name"));
+        if (intent.resolveActivity(getPackageManager()) != null)
+        {
+            startActivity(intent);
         }
     }
 }
