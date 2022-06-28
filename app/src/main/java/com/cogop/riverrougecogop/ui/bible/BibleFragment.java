@@ -30,4 +30,7 @@ public class BibleFragment extends Fragment {
         });
         return root;
     }
+
+    public void helpButton(View view) {
+    }
 }
