@@ -1,18 +1,26 @@
 package com.cogop.riverrougecogop;
 
 import android.annotation.SuppressLint;
-import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
 import android.webkit.WebView;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
+import androidx.annotation.ColorInt;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -41,14 +49,48 @@ public class MainActivity extends AppCompatActivity {
     // Identifires ------------------------------------------------//
     DrawerLayout drawerLayout;
     WebView web;
+
     ListView listView;
     ArrayList<VideoDetails> videoDetailsArrayList;
     MyCustomAdapter myCustomAdapter;
     String url = "http://www.google.com";
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        if (checkInstallation(MainActivity.this, "us.zoom.videomeetings")) {
+            // zoom installed
+            TextView myTextView = findViewById(R.id.textView44);
+            myTextView.setText("Zoom Installed: YES");
+            myTextView.setTextColor(Color.parseColor("#32CD32"));
+
+        } else {
+            // zoom not installed
+            TextView myTextView = findViewById(R.id.textView44);
+            myTextView.setText("Zoom Installed: NO");
+            myTextView.setTextColor(Color.parseColor("#ff0000"));
+
+
+        }
+    }
+
+    public static boolean checkInstallation(Context context, String packageName) {
+        // on below line creating a variable for package manager.
+        PackageManager pm = context.getPackageManager();
+        try {
+            // on below line getting package info
+            pm.getPackageInfo(packageName, PackageManager.GET_ACTIVITIES);
+            // on below line returning true if package is installed.
+            return true;
+        } catch (PackageManager.NameNotFoundException e) {
+            // returning false if package is not installed on device.
+            return false;
+        }
+    }
+
     // OnCreate --------------------------------------------------//
     @SuppressLint("SetJavaScriptEnabled")
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,6 +116,7 @@ public class MainActivity extends AppCompatActivity {
         navView.getMenu().getItem(1).setChecked(true);
         navView.setSelectedItemId(R.id.navigation_dashboard);
     }
+
 
     private void displayVideos() {
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
@@ -143,6 +186,7 @@ public class MainActivity extends AppCompatActivity {
         Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://goo.gl/maps/4vFb2BirR8drRxn3A"));
         startActivity(browserIntent);
     }
+
     public void biblebtn(View view) {
         //intents
         Intent i;
@@ -182,6 +226,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void help(View view) {
+    }
+    DrawerLayout mMenu;
+    public void menu(View view){
+        try {
+            mMenu = findViewById(R.id.drawer_layout);
+            mMenu.open();
+        }
+        catch(Exception e){
+        }
     }
 
     public void profile(View view) {
