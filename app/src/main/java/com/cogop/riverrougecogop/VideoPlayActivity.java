@@ -1,8 +1,8 @@
 package com.cogop.riverrougecogop;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class VideoPlayActivity extends AppCompatActivity {
 

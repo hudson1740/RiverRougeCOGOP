@@ -33,4 +33,7 @@ public class BibleFragment extends Fragment {
 
     public void helpButton(View view) {
     }
+
+    public void biblebtn(View view) {
+    }
 }

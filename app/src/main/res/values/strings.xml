@@ -4,53 +4,28 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="title_activity_navagation">NavagationActivity</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">RiverRougeCOGOP</string>
     <string name="nav_header_subtitle">support@brett-techrepair.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
-    <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
-    <string name="navdrawer">navdrawer</string>
     <string name="navmenu">navmenu</string>
-    <string name="river_rouge_church_of_god_of_prophecy">River Rouge Church of God of Prophecy</string>
-    <string name="layout_bible">layoutbible</string>
-    <string name="layout_bible_nkjv_xml">layoutbible_nkjv.xml</string>
     <string name="welcome_to_my_new_video">Welcome to my new video</string>
     <string name="no_new_notifications">No New Notifications!</string>
-    <string name="announcements">Announcements</string>
     <string name="title_activity_details">Details</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
 
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="edit">Edit</string>
     <string name="title_activity_settings">SettingsActivity</string>
 
     <!-- Preference Titles -->
     <string name="messages_header">Messages</string>
-    <string name="sync_header">Sync</string>
 
     <!-- Messages Preferences -->
     <string name="signature_title">Your signature</string>
     <string name="reply_title">Default reply action</string>
 
     <!-- Sync Preferences -->
-    <string name="sync_title">Sync email periodically</string>
-    <string name="attachment_title">Download incoming attachments</string>
-    <string name="attachment_summary_on">Automatically download attachments for incoming emails
-    </string>
-    <string name="attachment_summary_off">Only download attachments when manually requested</string>
-    <string name="cogop_help_page">COGOP Help Page</string>
-    <string name="title_activity_help">help</string>
-    <string name="Chat" />
     <string name="chat">Chat</string>
 
 

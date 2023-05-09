@@ -1,19 +1,14 @@
 package com.cogop.riverrougecogop;
 
 import android.annotation.SuppressLint;
-import android.content.ActivityNotFoundException;
 import android.content.ComponentName;
-import android.content.Context;
 import android.content.Intent;
-import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.webkit.WebView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -30,13 +25,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.errorprone.annotations.Var;
-import com.google.rpc.Help;
 import com.cogop.riverrougecogop.adapter.MyCustomAdapter;
 import com.cogop.riverrougecogop.model.VideoDetails;
-import com.cogop.riverrougecogop.ui.home.HomeFragment;
-import com.cogop.riverrougecogop.ui.home.HomeViewModel;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -57,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
 
     // OnCreate --------------------------------------------------//
     @SuppressLint("SetJavaScriptEnabled")
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -127,6 +119,7 @@ public class MainActivity extends AppCompatActivity {
 
     // Dashboard Button Actions ----------------------------------------------------------------------//
     public void join1(View view) {
+
         Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://bit.ly/RRCOGOP"));
         startActivity(browserIntent);
     }
@@ -149,6 +142,23 @@ public class MainActivity extends AppCompatActivity {
     public void locationbtn(View view) {
         Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://goo.gl/maps/4vFb2BirR8drRxn3A"));
         startActivity(browserIntent);
+    }
+    public void biblebtn(View view) {
+        //intents
+        Intent i;
+        PackageManager manager = getPackageManager();
+
+        //find and open you version bible app or redirect to google play to install app
+        try {
+            i = manager.getLaunchIntentForPackage("com.sirma.mobile.bible.android");
+            if (i == null)
+                throw new PackageManager.NameNotFoundException();
+            i.addCategory(Intent.CATEGORY_LAUNCHER);
+            startActivity(i);
+        } catch (PackageManager.NameNotFoundException e) {
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=com.sirma.mobile.bible.android"));
+            startActivity(browserIntent);
+        }
     }
 
     public void bible1(View view) {
@@ -176,14 +186,5 @@ public class MainActivity extends AppCompatActivity {
 
     public void profile(View view) {
         Toast.makeText(MainActivity.this, "This option is under development, please look for upcoming updates", Toast.LENGTH_LONG).show();
-    }
-
-    public void biblebtn(View view,Context context) {
-        Intent intent = new Intent(Intent.ACTION_MAIN);
-        intent.setComponent(new ComponentName("com.android.chrome", "Class_name"));
-        if (intent.resolveActivity(getPackageManager()) != null)
-        {
-            startActivity(intent);
-        }
     }
 }

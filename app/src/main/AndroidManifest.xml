@@ -54,4 +54,11 @@
         </activity>
     </application>
 
+    <!--Needed to open a installed app on device-->
+    <queries>
+        <package android:name="com.sirma.mobile.bible.android" />
+        <package android:name="com.android.chrome" />
+        <package android:name="us.zoom.videomeetings" />
+    </queries>
+
 </manifest>
