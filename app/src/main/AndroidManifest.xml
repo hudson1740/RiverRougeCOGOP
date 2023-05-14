@@ -2,17 +2,18 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.cogop.riverrougecogop">
 
-    <uses-permission android:name="android.permission.INTERNET" />
+<uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <application
         android:allowBackup="true"
         android:configChanges="orientation|screenSize|keyboardHidden"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:networkSecurityConfig="@xml/network_security_config"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.RiverRougeCOGOP">
+
+
         <activity
             android:name=".SettingsActivity"
             android:exported="true"
@@ -43,12 +44,16 @@
             android:label="NotesMainActivity" />
         <activity
             android:name=".MainActivity"
-            android:label="@string/app_name"
-            android:exported="true">
+            android:exported="true"
+            android:enabled="true"
+            android:permission="com.google.android.c2dm.permission.SEND" >
+
+        >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="com.google.firebase.MESSAGING_EVENT"/>
                 <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
             </intent-filter>
         </activity>
     </application>
@@ -59,5 +64,6 @@
         <package android:name="com.android.chrome" />
         <package android:name="us.zoom.videomeetings" />
     </queries>
+
 
 </manifest>

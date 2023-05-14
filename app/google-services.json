@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "302156031339",
-    "project_id": "cogop-631a6",
-    "storage_bucket": "cogop-631a6.appspot.com"
+    "project_number": "811299070585",
+    "project_id": "riverrougecogop-bbe78",
+    "storage_bucket": "riverrougecogop-bbe78.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:302156031339:android:0c40258a3c8955b761182e",
+        "mobilesdk_app_id": "1:811299070585:android:e810f2237eb0a1c591aaa8",
         "android_client_info": {
           "package_name": "com.cogop.riverrougecogop"
         }
       },
       "oauth_client": [
         {
-          "client_id": "302156031339-qv0216mp6hufh9l47pgh551jk25ehnkc.apps.googleusercontent.com",
+          "client_id": "811299070585-1tra13v4u4bscv206e7cmpgn7ati66bo.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCr3C60XIzIWh7P-6At9v-7q7jKo91reh4"
+          "current_key": "AIzaSyDDfdxkhYxSJjyn2P2IQc3d-A8ATrusP4A"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "302156031339-qv0216mp6hufh9l47pgh551jk25ehnkc.apps.googleusercontent.com",
+              "client_id": "811299070585-1tra13v4u4bscv206e7cmpgn7ati66bo.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
