@@ -14,7 +14,7 @@ public class Announcements extends AppCompatActivity {
     ListView listView3;
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        this.supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.announcements_activity);
 
         //Announcements list in Fragment_notifications
@@ -25,7 +25,7 @@ public class Announcements extends AppCompatActivity {
         arrayList.add("Bible Study Wed. 6pm-8pm");
         arrayList.add("Regional Convention Sep. 10th-11th, Harvest Worship Center ");
 
-        ArrayAdapter arrayAdapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1,arrayList);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,arrayList);
         listView3.setAdapter(arrayAdapter);
     }
 }
