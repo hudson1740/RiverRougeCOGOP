@@ -8,20 +8,14 @@ import android.content.res.Configuration;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
 import android.webkit.WebView;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
-import androidx.annotation.ColorInt;
-import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -71,8 +65,6 @@ public class MainActivity extends AppCompatActivity {
             TextView myTextView = findViewById(R.id.textView44);
             myTextView.setText("Zoom Installed: NO");
             myTextView.setTextColor(Color.parseColor("#F3FB03"));
-
-
         }
     }
     @Override
@@ -85,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
             setContentView(R.layout.fragment_dashboard);
         }
     }
+
     public static boolean checkInstallation(Context context, String packageName) {
         // on below line creating a variable for package manager.
         PackageManager pm = context.getPackageManager();
@@ -223,6 +216,16 @@ public class MainActivity extends AppCompatActivity {
     public void announcementsbtn(View view) {
         Intent announcements = new Intent(view.getContext(), Announcements.class);
         startActivityForResult(announcements, 0);
+    }
+
+    public void landscape(View view){
+        Intent landscape = new Intent(view.getContext(), landscape.class);
+        startActivity(landscape);
+    }
+
+    public void home(View view){
+        Intent home = new Intent(view.getContext(), Home.class);
+        startActivity(home);
     }
 
     public void notesbtn(View view) {
