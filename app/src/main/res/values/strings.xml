@@ -27,6 +27,13 @@
 
     <!-- Sync Preferences -->
     <string name="chat">Chat</string>
+    <string name="church_of_god_of_prophecy">Church of God of Prophecy</string>
+    <string name="_41_orchard_st_river_rouge_mi_48218">41 Orchard St. River Rouge, MI 48218</string>
+    <string name="join_service">Join Service</string>
+    <string name="announcements">Announcements</string>
+    <string name="bible">Bible</string>
+    <string name="today_s_service">Today\'s Service</string>
+    <string name="settings">Settings</string>
 
 
 </resources>

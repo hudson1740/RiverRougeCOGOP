@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
             // zoom not installed
             TextView myTextView = findViewById(R.id.textView44);
             myTextView.setText("Zoom Installed: NO");
-            myTextView.setTextColor(Color.parseColor("#ff0000"));
+            myTextView.setTextColor(Color.parseColor("#F3FB03"));
 
 
         }

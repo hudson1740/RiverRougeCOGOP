@@ -14,11 +14,47 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RiverRougeCOGOP">
 
+        <!-- Settings -->
+        <activity
+            android:name=".SettingsActivity"
+            android:exported="true"
+            android:label="@string/title_activity_settings" />
+        <activity android:name=".Edit" />
+        <!-- Details -->
+        <activity
+            android:name=".Details"
+            android:label="@string/title_activity_details"
+            android:theme="@style/Theme.RiverRougeCOGOP.NoActionBar" />
+        <!-- Add Note -->
+        <activity android:name=".AddNote">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".NotesMainActivity" />
+        </activity>
+        <!-- Video Player -->
+        <activity android:name=".VideoPlayActivity" />
+        <!-- navigate -->
+        <activity
+            android:name=".NavagationActivity"
+            android:label="@string/title_activity_navagation"
+            android:theme="@style/Theme.RiverRougeCOGOP.NoActionBar" />
+        <!-- Announcements -->
+        <activity
+            android:name=".Announcements"
+            android:label="Announcements" />
+        <!-- Bible -->
+        <activity
+            android:name=".Bible"
+            android:label="Bible" />
+        <!-- Notes Main -->
+        <activity
+            android:name=".NotesMainActivity"
+            android:label="NotesMainActivity" />
+        <!-- Main Activity -->
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:enabled="true"
-           >
+            android:enabled="true">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -34,3 +70,4 @@
         <package android:name="us.zoom.videomeetings" />
     </queries>
 </manifest>
+
