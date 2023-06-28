@@ -18,7 +18,7 @@
             android:name=".MainActivity"
             android:exported="true"
             android:enabled="true"
-            android:permission="com.google.android.c2dm.permission.SEND">
+           >
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
