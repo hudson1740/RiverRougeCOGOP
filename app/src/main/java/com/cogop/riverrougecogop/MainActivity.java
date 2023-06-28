@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
@@ -53,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
     ListView listView;
     ArrayList<VideoDetails> videoDetailsArrayList;
     MyCustomAdapter myCustomAdapter;
-    String url = "http://www.google.com";
+    String url = "https://www.google.com";
 
     @Override
     protected void onStart() {
@@ -74,7 +75,16 @@ public class MainActivity extends AppCompatActivity {
 
         }
     }
-
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        // Check the new orientation
+        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            setContentView(R.layout.fragment_dashboard);
+        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
+            setContentView(R.layout.fragment_dashboard);
+        }
+    }
     public static boolean checkInstallation(Context context, String packageName) {
         // on below line creating a variable for package manager.
         PackageManager pm = context.getPackageManager();
