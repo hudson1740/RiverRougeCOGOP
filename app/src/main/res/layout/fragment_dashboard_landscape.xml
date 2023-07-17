@@ -449,7 +449,23 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cardView3">
 
+            <!--<LinearLayout
+                android:id="@+id/bottomBanner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/red"
+                android:orientation="horizontal" >
 
+                <TextView
+                    android:id="@+id/textViewVerse"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@string/daily_scripture"
+                    android:textStyle="bold"
+                    android:textAlignment="center"
+                    android:textSize="@dimen/_12sdp"
+                    android:textColor="@color/yellow"/>
+            </LinearLayout>-->
         </LinearLayout>
         <LinearLayout
             android:id="@+id/socialMediaLayout"

@@ -8,6 +8,7 @@ import android.content.res.Configuration;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.View;
 import android.view.Window;
 import android.webkit.WebView;
@@ -37,8 +38,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-
-// This Project was built by the developers of Brett Tech Networking for the Church of God of Prophecy, River Rouge, MI //
+import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
     // Identifires ------------------------------------------------//
@@ -49,6 +49,10 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<VideoDetails> videoDetailsArrayList;
     MyCustomAdapter myCustomAdapter;
     String url = "https://www.google.com";
+
+    private TextView textViewVerse;
+    private CountDownTimer verseTimer;
+    private long remainingTime;
 
     @Override
     protected void onStart() {
@@ -67,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
             myTextView.setTextColor(Color.parseColor("#F3FB03"));
         }
     }
+
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
@@ -98,9 +103,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTheme(R.style.LightTheme);
-        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        this.supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.nav_activity_main);
-        listView = (ListView) findViewById(R.id.listview1);
+        textViewVerse = findViewById(R.id.textViewVerse);
+
+        listView = findViewById(R.id.listview1);
+
         videoDetailsArrayList = new ArrayList<>();
         myCustomAdapter = new MyCustomAdapter(MainActivity.this, videoDetailsArrayList);
         displayVideos();
@@ -118,8 +126,36 @@ public class MainActivity extends AppCompatActivity {
         //Tells the app too start on Dashboard instead of "Home"
         navView.getMenu().getItem(1).setChecked(true);
         navView.setSelectedItemId(R.id.navigation_dashboard);
+
+        // Check if a saved timestamp exists
+        long savedTimestamp = getSharedPreferences("MainActivity", Context.MODE_PRIVATE).getLong("timestamp", 0);
+        if (savedTimestamp == 0) {
+            // No saved timestamp, display a random verse and start the timer
+            displayRandomVerse();
+            startVerseTimer(12 * 60 * 60 * 1000); // 12 hours in milliseconds
+        } else {
+            // Calculate the remaining time from the saved timestamp
+            long currentTime = System.currentTimeMillis();
+            long elapsedTime = currentTime - savedTimestamp;
+            if (elapsedTime >= 12 * 60 * 60 * 1000) {
+                // More than 12 hours have passed, display a random verse and start the timer
+                displayRandomVerse();
+                startVerseTimer(12 * 60 * 60 * 1000); // 12 hours in milliseconds
+            } else {
+                // Less than 12 hours have passed, resume the timer with the remaining time
+                long remainingTime = 12 * 60 * 60 * 1000 - elapsedTime;
+                startVerseTimer(remainingTime);
+            }
+        }
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        // Save the current timestamp
+        long currentTimestamp = System.currentTimeMillis();
+        getSharedPreferences("MainActivity", Context.MODE_PRIVATE).edit().putLong("timestamp", currentTimestamp).apply();
+    }
 
     private void displayVideos() {
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
@@ -165,7 +201,6 @@ public class MainActivity extends AppCompatActivity {
 
     // Dashboard Button Actions ----------------------------------------------------------------------//
     public void join1(View view) {
-
         Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://bit.ly/RRCOGOP"));
         startActivity(browserIntent);
     }
@@ -218,12 +253,12 @@ public class MainActivity extends AppCompatActivity {
         startActivityForResult(announcements, 0);
     }
 
-    public void landscape(View view){
+    public void landscape(View view) {
         Intent landscape = new Intent(view.getContext(), landscape.class);
         startActivity(landscape);
     }
 
-    public void home(View view){
+    public void home(View view) {
         Intent home = new Intent(view.getContext(), Home.class);
         startActivity(home);
     }
@@ -240,17 +275,54 @@ public class MainActivity extends AppCompatActivity {
 
     public void help(View view) {
     }
+
     DrawerLayout mMenu;
-    public void menu(View view){
+
+    public void menu(View view) {
         try {
             mMenu = findViewById(R.id.drawer_layout);
             mMenu.open();
-        }
-        catch(Exception e){
+        } catch (Exception e) {
         }
     }
 
     public void profile(View view) {
         Toast.makeText(MainActivity.this, "This option is under development, please look for upcoming updates", Toast.LENGTH_LONG).show();
+    }
+
+    private void displayRandomVerse() {
+        // Replace with your logic to fetch and display a random Bible verse
+        String[] verses = {
+                "For God so loved the world, that he gave his only Son, that whoever believes in him should not perish but have eternal life. - John 3:16",
+                "Trust in the LORD with all your heart, and do not lean on your own understanding. - Proverbs 3:5",
+                "The LORD is my shepherd; I shall not want. - Psalm 23:1",
+                // Add more Bible verses as needed
+        };
+
+        Random random = new Random();
+        int index = random.nextInt(verses.length);
+        String randomVerse = verses[index];
+
+        textViewVerse.setText(randomVerse);
+    }
+
+    private void startVerseTimer(long duration) {
+        verseTimer = new CountDownTimer(duration, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                remainingTime = millisUntilFinished;
+            }
+
+            @Override
+            public void onFinish() {
+                // Timer finished, display a new random verse
+                displayRandomVerse();
+                // Restart the timer
+                startVerseTimer(12 * 60 * 60 * 1000); // 12 hours in milliseconds
+            }
+        }.start();
+
+        // Initial display of a random verse
+        displayRandomVerse();
     }
 }
