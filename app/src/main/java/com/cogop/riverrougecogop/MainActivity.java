@@ -66,18 +66,23 @@ public class MainActivity extends AppCompatActivity{
     protected void onStart() {
         super.onStart();
         Log.d("MainActivity", "onStart() called");
-        if (checkInstallation(MainActivity.this, "us.zoom.videomeetings")) {
-            // zoom installed
-            TextView myTextView = findViewById(R.id.textView44);
+
+        boolean isZoomInstalled = checkInstallation(MainActivity.this, "us.zoom.videomeetings");
+        TextView myTextView = findViewById(R.id.textView44);
+
+        if (isZoomInstalled) {
+            // Zoom is installed
             myTextView.setText(R.string.zoom_installed_yes);
-            myTextView.setTextColor(Color.parseColor("#32CD32"));
+            myTextView.setTextColor(Color.parseColor("#32CD32")); // Green color
+            Log.d("ZoomInstallation", "Zoom is installed.");
         } else {
-            // zoom not installed
-            TextView myTextView = findViewById(R.id.textView44);
+            // Zoom is not installed
             myTextView.setText(R.string.zoom_installed_no);
-            myTextView.setTextColor(Color.parseColor("#F3FB03"));
+            myTextView.setTextColor(Color.parseColor("#ECF400")); // Yellow color
+            Log.d("ZoomInstallation", "Zoom is not installed.");
         }
     }
+
 
   /*  @Override
     public void onConfigurationChanged(Configuration newConfig) {
