@@ -22,8 +22,14 @@
 
 <!--SLIDESHOW-->
         <item
-            android:id="@+id/nav_slideshow"
+            android:id="@+id/announcebtn"
             android:icon="@drawable/ic_baseline_announcement_24"
-            android:title="Announcements" />
+            android:title="Announcements"
+            android:onClick="announcebtn"/>
+        <item
+            android:id="@+id/giveButton"
+            android:icon="@drawable/ic_money"
+            android:title="Give (offering, donations etc.)"
+            android:onClick="giveButton"/>
     </group>
 </menu>

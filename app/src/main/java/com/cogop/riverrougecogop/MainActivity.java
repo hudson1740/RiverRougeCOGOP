@@ -4,11 +4,12 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.content.res.Configuration;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.webkit.WebView;
@@ -16,6 +17,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
@@ -32,6 +34,7 @@ import com.android.volley.toolbox.Volley;
 import com.cogop.riverrougecogop.adapter.MyCustomAdapter;
 import com.cogop.riverrougecogop.model.VideoDetails;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -40,7 +43,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity{
     // Identifires ------------------------------------------------//
     DrawerLayout drawerLayout;
     WebView web;
@@ -57,22 +60,21 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-
+        Log.d("MainActivity", "onStart() called");
         if (checkInstallation(MainActivity.this, "us.zoom.videomeetings")) {
             // zoom installed
             TextView myTextView = findViewById(R.id.textView44);
-            myTextView.setText("Zoom Installed: YES");
+            myTextView.setText(R.string.zoom_installed_yes);
             myTextView.setTextColor(Color.parseColor("#32CD32"));
-
         } else {
             // zoom not installed
             TextView myTextView = findViewById(R.id.textView44);
-            myTextView.setText("Zoom Installed: NO");
+            myTextView.setText(R.string.zoom_installed_no);
             myTextView.setTextColor(Color.parseColor("#F3FB03"));
         }
     }
 
-    @Override
+  /*  @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         // Check the new orientation
@@ -81,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
         } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
             setContentView(R.layout.fragment_dashboard);
         }
-    }
+    }*/
 
     public static boolean checkInstallation(Context context, String packageName) {
         // on below line creating a variable for package manager.
@@ -108,7 +110,6 @@ public class MainActivity extends AppCompatActivity {
         textViewVerse = findViewById(R.id.textViewVerse);
 
         listView = findViewById(R.id.listview1);
-
         videoDetailsArrayList = new ArrayList<>();
         myCustomAdapter = new MyCustomAdapter(MainActivity.this, videoDetailsArrayList);
         displayVideos();
@@ -148,7 +149,16 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
-
+    //navigation menu items make sure it is MenuItem item note View view !!!!!
+    public void giveButton(MenuItem item) {
+        // Your action when the "Give (offering, donations etc.)" item is clicked
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://cash.app/$RiverRougeCOGOP"));
+        startActivity(browserIntent);
+    }
+    public void announcebtn(MenuItem item) {
+        Intent announcementsIntent = new Intent(this, Announcements.class);
+        startActivity(announcementsIntent);
+    }
     @Override
     protected void onPause() {
         super.onPause();
@@ -253,10 +263,10 @@ public class MainActivity extends AppCompatActivity {
         startActivityForResult(announcements, 0);
     }
 
-    public void landscape(View view) {
+    /*public void landscape(View view) {
         Intent landscape = new Intent(view.getContext(), landscape.class);
         startActivity(landscape);
-    }
+    }*/
 
     public void home(View view) {
         Intent home = new Intent(view.getContext(), Home.class);
@@ -275,6 +285,12 @@ public class MainActivity extends AppCompatActivity {
 
     public void help(View view) {
     }
+
+    public void cashapp(View view){
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://cash.app/$RiverRougeCOGOP"));
+        startActivity(browserIntent);
+    }
+
 
     DrawerLayout mMenu;
 

@@ -38,6 +38,9 @@
     <string name="location">Location</string>
     <string name="notes">Notes</string>
     <string name="daily_scripture">Daily Scripture</string>
+    <string name="zoom_installed">Zoom Installed:</string>
+    <string name="zoom_installed_yes">Zoom Installed: YES</string>
+    <string name="zoom_installed_no">Zoom Installed: NO</string>
 
 
 </resources>

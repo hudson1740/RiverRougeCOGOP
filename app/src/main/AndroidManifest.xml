@@ -18,7 +18,9 @@
         <activity
             android:name=".SettingsActivity"
             android:exported="true"
-            android:label="@string/title_activity_settings" />
+            android:label="@string/title_activity_settings"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
+
         <activity android:name=".Edit" />
         <!-- Details -->
         <activity
@@ -53,12 +55,15 @@
         <activity
             android:name=".landscape"
             android:label="landscape" />
+
+
         <!-- Main Activity -->
         <activity
             android:name=".MainActivity"
             android:exported="true"
             android:enabled="true"
             android:configChanges="orientation|screenSize|fontScale|screenLayout|smallestScreenSize">
+
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
