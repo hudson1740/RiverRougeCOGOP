@@ -286,9 +286,10 @@ public class MainActivity extends AppCompatActivity{
     }
 
     public void notesbtn(View view) {
-        Intent notesintent = new Intent(view.getContext(), NotesMainActivity.class);
+        Intent notesintent = new Intent(MainActivity.this, NotesMainActivity.class);
         startActivityForResult(notesintent, 0);
     }
+
 
     public void settings(View view) {
         Intent settingsintent = new Intent(view.getContext(), SettingsActivity.class);

@@ -23,8 +23,9 @@ public class NotesMainActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.notes_main_activity);
+
         toolbar = findViewById(R.id.toolbar);
-        //setSupportActionBar(toolbar);
+        setSupportActionBar(toolbar);
         NoteDatabase db = new NoteDatabase(this);
         notes = db.getNotes();
         recyclerView = findViewById(R.id.listOfNotes);

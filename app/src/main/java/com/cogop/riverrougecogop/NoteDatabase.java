@@ -79,12 +79,12 @@ public class NoteDatabase extends SQLiteOpenHelper {
     public List<Note> getNotes() {
         SQLiteDatabase db = this.getReadableDatabase();
         List<Note> allNotes = new ArrayList<>();
-        //select *(all) from databaseName
+        // select *(all) from databaseName
 
-        String query ="SELECT * FROM "+DATABASE_TABLE;
-        Cursor cursor = db.rawQuery(query,null);
+        String query = "SELECT * FROM " + DATABASE_TABLE;
+        Cursor cursor = db.rawQuery(query, null);
 
-        if (cursor.moveToFirst())
+        if (cursor.moveToFirst()) {
             do {
                 Note note = new Note();
                 note.setID(cursor.getLong(0));
@@ -94,11 +94,11 @@ public class NoteDatabase extends SQLiteOpenHelper {
                 note.setTime(cursor.getString(4));
 
                 allNotes.add(note);
-
-
-            }while (cursor.moveToNext());
-            return allNotes;
+            } while (cursor.moveToNext());
+        }
+        return allNotes;
     }
+
 
     void deleteNote(long id){
         SQLiteDatabase db = this.getWritableDatabase();
