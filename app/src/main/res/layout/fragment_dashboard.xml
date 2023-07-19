@@ -95,6 +95,7 @@
                 android:layout_marginTop="4dp"
                 android:text="@string/zoom_installed"
                 android:textColor="@android:color/white"
+                android:visibility="visible"
                 android:textSize="@dimen/_10sdp"
                 android:textStyle="bold" />
 
@@ -465,7 +466,7 @@
                 android:textStyle="bold"
                 android:textAlignment="center"
                 android:textSize="@dimen/_12sdp"
-                android:textColor="@color/yellow"/>
+                android:textColor="@color/white"/>
         </LinearLayout>
         <LinearLayout
             android:id="@+id/socialMediaLayout"

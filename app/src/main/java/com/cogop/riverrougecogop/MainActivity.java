@@ -3,6 +3,7 @@ package com.cogop.riverrougecogop;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.net.Uri;
@@ -13,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.webkit.WebView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,6 +26,7 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+import androidx.preference.PreferenceManager;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -47,11 +50,13 @@ public class MainActivity extends AppCompatActivity{
     // Identifires ------------------------------------------------//
     DrawerLayout drawerLayout;
     WebView web;
-
     ListView listView;
     ArrayList<VideoDetails> videoDetailsArrayList;
     MyCustomAdapter myCustomAdapter;
     String url = "https://www.google.com";
+    private TextView textView44;
+    ImageView backButton;
+
 
     private TextView textViewVerse;
     private CountDownTimer verseTimer;
@@ -106,9 +111,9 @@ public class MainActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setTheme(R.style.LightTheme);
         this.supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
+
         setContentView(R.layout.nav_activity_main);
         textViewVerse = findViewById(R.id.textViewVerse);
-
         listView = findViewById(R.id.listview1);
         videoDetailsArrayList = new ArrayList<>();
         myCustomAdapter = new MyCustomAdapter(MainActivity.this, videoDetailsArrayList);
@@ -159,6 +164,8 @@ public class MainActivity extends AppCompatActivity{
         Intent announcementsIntent = new Intent(this, Announcements.class);
         startActivity(announcementsIntent);
     }
+
+
     @Override
     protected void onPause() {
         super.onPause();

@@ -1,8 +1,25 @@
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<androidx.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <SwitchPreferenceCompat
-        android:key="show_text_view_44"
-        android:title="Show TextView44"
-        android:defaultValue="true" />
+    <!-- Header -->
+    <PreferenceCategory
+        android:title="General Settings"
+        android:icon="@drawable/baseline_settings_24_red"
+        app:allowDividerBelow="true"
+        android:iconSpaceReserved="false">
 
-</PreferenceScreen>
+        <SwitchPreferenceCompat
+            android:key="show_text_view_44"
+            android:title="Show Zoom Installed Text"
+            android:summary="Enable to show TextView44"
+            android:defaultValue="true"
+            android:icon="@drawable/baseline_visibility_24_red"
+            android:iconTint="@color/colorAccent"
+            android:switchTextAppearance="@style/Preference.SwitchTextAppearance" />
+
+    </PreferenceCategory>
+
+
+    <!-- Add more preferences here if needed -->
+
+</androidx.preference.PreferenceScreen>

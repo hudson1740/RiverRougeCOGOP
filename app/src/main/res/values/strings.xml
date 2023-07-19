@@ -41,6 +41,7 @@
     <string name="zoom_installed">Zoom Installed:</string>
     <string name="zoom_installed_yes">Zoom Installed: YES</string>
     <string name="zoom_installed_no">Zoom Installed: NO</string>
+    <string name="backbutton">backbutton</string>
 
 
 </resources>
