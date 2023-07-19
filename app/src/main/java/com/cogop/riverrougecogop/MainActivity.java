@@ -314,18 +314,11 @@ public class MainActivity extends AppCompatActivity{
     }
 
     private void displayRandomVerse() {
-        // Replace with your logic to fetch and display a random Bible verse
-        String[] verses = {
-                "Daily Scripture  \n" + "For God so loved the world, that he gave his only Son, that whoever believes in him should not perish but have eternal life. - John 3:16",
-                "Daily Scripture \n" + "Trust in the LORD with all your heart, and do not lean on your own understanding. - Proverbs 3:5",
-                "Daily Scripture \n" + "The LORD is my shepherd; I shall not want. - Psalm 23:1",
-                // Add more Bible verses as needed
-        };
+        // Fetch a random Bible verse from the BibleVersesProvider
+        String randomVerse = BibleVersesProvider.getRandomVerse();
 
-        Random random = new Random();
-        int index = random.nextInt(verses.length);
-        String randomVerse = verses[index];
-
+        // Display the verse in the textViewVerse
+        TextView textViewVerse = findViewById(R.id.textViewVerse);
         textViewVerse.setText(randomVerse);
     }
 
