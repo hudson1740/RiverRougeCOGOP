@@ -90,7 +90,7 @@
 
             <TextView
                 android:id="@+id/textView44"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:text="@string/zoom_installed"
@@ -454,7 +454,7 @@
             android:id="@+id/bottomBanner"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/red"
+            android:background="@color/darkred"
             android:layout_marginTop="@dimen/_10sdp"
             android:orientation="horizontal" >
 
@@ -465,6 +465,7 @@
                 android:text="@string/daily_scripture"
                 android:textStyle="bold"
                 android:layout_marginTop="@dimen/_2sdp"
+                android:layout_marginBottom="@dimen/_1sdp"
                 android:textAlignment="center"
                 android:textSize="@dimen/_12sdp"
                 android:textColor="@color/white"/>

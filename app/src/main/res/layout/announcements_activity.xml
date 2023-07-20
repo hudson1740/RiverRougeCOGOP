@@ -30,12 +30,22 @@
         android:textStyle="bold"
         android:textColor="@color/white"
         android:textSize="@dimen/_20sdp"/>
+    <TextView
+        android:id="@+id/announcementsDesc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/announcementsTitle"
+        android:textAlignment="center"
+        android:text="@string/AnnouncementsDesc"
+        android:textStyle="bold"
+        android:textColor="@color/red"
+        android:textSize="@dimen/_10sdp"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview_announcements"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/announcementsTitle"
+        android:layout_below="@id/announcementsDesc"
         android:divider="@android:color/darker_gray"
         android:dividerHeight="1dp"
         android:padding="8dp"

@@ -43,6 +43,7 @@
     <string name="zoom_installed_no">Zoom Installed: NO</string>
     <string name="backbutton">backbutton</string>
     <string name="announcementsTitle"><u>Announcements</u></string>
+    <string name="AnnouncementsDesc">These will auto update as the tech team enters upcoming announcements, Please check back often!</string>
 
 
 </resources>
