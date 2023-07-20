@@ -1,31 +1,88 @@
 package com.cogop.riverrougecogop;
 
 import android.os.Bundle;
-import android.view.Window;
+import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.ListView;
-
+import android.widget.ImageButton;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.cogop.riverrougecogop.ui.dashboard.DashboardFragment;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Announcements extends AppCompatActivity {
 
-    ListView listView3;
-    public void onCreate(Bundle savedInstanceState) {
+    private RecyclerView recyclerView;
+    private AnnouncementsAdapter announcementsAdapter;
+    private List<String> announcementsList;
+    ImageButton backbutton1;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.announcements_activity);
 
-        //Announcements list in Fragment_notifications
-        listView3=(ListView)findViewById(R.id.listview3);
-        ArrayList<String> arrayList=new ArrayList<>();
-        arrayList.add("Sunday School 11am-12pm");
-        arrayList.add("Sunday Service 12pm-1pm");
-        arrayList.add("Bible Study Wed. 6pm-8pm");
-        arrayList.add("Regional Convention Sep. 10th-11th, Harvest Worship Center ");
 
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,arrayList);
-        listView3.setAdapter(arrayAdapter);
+        // Inside the onCreate method after finding the ImageButton by its ID
+        ImageButton backButton = findViewById(R.id.backButton1);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Go back to the fragment_dashboard
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                fragmentManager.popBackStackImmediate("fragment_dashboard", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                Log.d("Announcements", "Back button clicked");
+            }
+        });
+
+
+
+        DatabaseReference announcementsRef = FirebaseDatabase.getInstance().getReference().child("announcements");
+        recyclerView = findViewById(R.id.recyclerview_announcements);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
+
+        announcementsList = new ArrayList<>();
+        announcementsAdapter = new AnnouncementsAdapter(announcementsList);
+        recyclerView.setAdapter(announcementsAdapter);
+
+        // Read data from the "announcements" node
+        announcementsRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                // This method will be triggered when the data in the database changes
+                // Clear the announcementsList to avoid duplicates
+                announcementsList.clear();
+
+                // You can parse the data and update your UI here
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    // Get each announcement as a string
+                    String announcement = snapshot.getValue(String.class);
+                    if (announcement != null) {
+                        announcementsList.add(announcement);
+                    }
+                }
+
+                // Notify the adapter that the data has changed
+                announcementsAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                // Handle any errors that occur while reading data
+            }
+        });
     }
 }

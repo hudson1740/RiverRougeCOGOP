@@ -72,13 +72,13 @@ public class MainActivity extends AppCompatActivity{
 
         if (isZoomInstalled) {
             // Zoom is installed
-            myTextView.setText(R.string.zoom_installed_yes);
             myTextView.setTextColor(Color.parseColor("#32CD32")); // Green color
+            myTextView.setText(R.string.zoom_installed_yes);
             Log.d("ZoomInstallation", "Zoom is installed.");
         } else {
             // Zoom is not installed
-            myTextView.setText(R.string.zoom_installed_no);
             myTextView.setTextColor(Color.parseColor("#ECF400")); // Yellow color
+            myTextView.setText(R.string.zoom_installed_no);
             Log.d("ZoomInstallation", "Zoom is not installed.");
         }
     }
@@ -272,7 +272,7 @@ public class MainActivity extends AppCompatActivity{
 
     public void announcementsbtn(View view) {
         Intent announcements = new Intent(view.getContext(), Announcements.class);
-        startActivityForResult(announcements, 0);
+        startActivity(announcements);
     }
 
     /*public void landscape(View view) {

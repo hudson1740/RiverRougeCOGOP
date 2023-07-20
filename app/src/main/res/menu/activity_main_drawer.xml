@@ -4,22 +4,22 @@
     tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single" android:id="@+id/hamMenu">
-        <item
+       <!-- <item
             android:id="@+id/Chat"
             android:icon="@drawable/ic_chat"
             android:title="@string/chat" />
 
-<!--GALLERY-->
+&lt;!&ndash;GALLERY&ndash;&gt;
         <item
             android:id="@+id/Youtube_Downloader"
             android:icon="@drawable/ic_youtube"
             android:title="Youtube Downloader" />
 
-        <!--BIBLE-->
+        &lt;!&ndash;BIBLE&ndash;&gt;
         <item
             android:icon="@drawable/ic_baseline_menu_book_24"
             android:title="COGOP Bible" />
-
+-->
 <!--SLIDESHOW-->
         <item
             android:id="@+id/announcebtn"
