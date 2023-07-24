@@ -1,5 +1,7 @@
 package com.cogop.riverrougecogop;
 
+import static android.content.ContentValues.TAG;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
@@ -38,6 +40,7 @@ import com.cogop.riverrougecogop.adapter.MyCustomAdapter;
 import com.cogop.riverrougecogop.model.VideoDetails;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -116,6 +119,20 @@ public class MainActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setTheme(R.style.LightTheme);
         this.supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
+
+        //firebase messaging
+        // Get the Firebase Messaging token
+        FirebaseMessaging.getInstance().getToken()
+                .addOnCompleteListener(task -> {
+                    if (!task.isSuccessful()) {
+                        Log.w(TAG, "Fetching FCM registration token failed", task.getException());
+                        return;
+                    }
+
+                    // Get the token
+                    String token = task.getResult();
+                    Log.d(TAG, "FCM Registration Token: " + token);
+                });
 
         setContentView(R.layout.nav_activity_main);
         textViewVerse = findViewById(R.id.textViewVerse);
