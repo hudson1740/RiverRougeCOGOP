@@ -8,14 +8,6 @@
         app:allowDividerBelow="true"
         android:iconSpaceReserved="false">
 
-        <SwitchPreferenceCompat
-            android:key="show_text_view_44"
-            android:title="Zoom Installed Text"
-            android:summary="Show/Hide Zoom Installed Text"
-            android:defaultValue="true"
-            android:icon="@drawable/baseline_visibility_24_red"
-            android:iconTint="@color/colorAccent"
-            android:switchTextAppearance="@style/Preference.SwitchTextAppearance" />
 
     </PreferenceCategory>
 
