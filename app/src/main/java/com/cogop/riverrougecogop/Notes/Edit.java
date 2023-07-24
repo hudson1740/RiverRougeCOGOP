@@ -1,4 +1,4 @@
-package com.cogop.riverrougecogop;
+package com.cogop.riverrougecogop.Notes;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +8,10 @@ import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
+import com.cogop.riverrougecogop.Notes.Note;
+import com.cogop.riverrougecogop.Notes.NoteDatabase;
+import com.cogop.riverrougecogop.R;
 
 import java.util.Calendar;
 

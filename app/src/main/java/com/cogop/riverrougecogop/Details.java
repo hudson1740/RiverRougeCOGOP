@@ -12,6 +12,10 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.cogop.riverrougecogop.Notes.Edit;
+import com.cogop.riverrougecogop.Notes.Note;
+import com.cogop.riverrougecogop.Notes.NoteDatabase;
+import com.cogop.riverrougecogop.Notes.NotesMainActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class Details extends AppCompatActivity {
@@ -43,7 +47,7 @@ public class Details extends AppCompatActivity {
             public void onClick(View view) {
                 db.deleteNote(note.getID());
                 Toast.makeText(getApplicationContext(),"Note Deleted",Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(getApplicationContext(),NotesMainActivity.class));
+                startActivity(new Intent(getApplicationContext(), NotesMainActivity.class));
                 goToMain();
             }
         });
@@ -60,7 +64,7 @@ public class Details extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if(item.getItemId() == R.id.editNote){
-            Intent i = new Intent(this,Edit.class);
+            Intent i = new Intent(this, Edit.class);
             i.putExtra("ID",note.getID());
             startActivity(i);
 

@@ -1,4 +1,4 @@
-package com.cogop.riverrougecogop;
+package com.cogop.riverrougecogop.Notes;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,6 +14,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
+import com.cogop.riverrougecogop.R;
 
 import java.util.Calendar;
 
@@ -84,7 +86,7 @@ String currentTime;
         }
         if (item.getItemId() == R.id.save){
             Note note = new Note(noteTitle.getText().toString(),noteDetails.getText().toString(),todaysDate,currentTime);
-            NoteDatabase db = new NoteDatabase(this);
+            com.cogop.riverrougecogop.Notes.NoteDatabase db = new com.cogop.riverrougecogop.Notes.NoteDatabase(this);
             db.addNote(note);
             Toast.makeText(this, "Save btn", Toast.LENGTH_SHORT).show();
             goToMain();
@@ -94,7 +96,7 @@ String currentTime;
     }
 
     private void goToMain() {
-        Intent i = new Intent(this,NotesMainActivity.class);
+        Intent i = new Intent(this, com.cogop.riverrougecogop.Notes.NotesMainActivity.class);
         startActivity(i);
     }
 

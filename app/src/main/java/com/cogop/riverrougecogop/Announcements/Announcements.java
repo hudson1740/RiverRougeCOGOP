@@ -1,4 +1,4 @@
-package com.cogop.riverrougecogop;
+package com.cogop.riverrougecogop.Announcements;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -13,6 +13,8 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.cogop.riverrougecogop.Announcements.AnnouncementsAdapter;
+import com.cogop.riverrougecogop.R;
 import com.cogop.riverrougecogop.ui.dashboard.DashboardFragment;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;

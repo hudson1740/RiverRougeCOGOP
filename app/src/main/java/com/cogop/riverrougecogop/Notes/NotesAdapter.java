@@ -1,4 +1,4 @@
-package com.cogop.riverrougecogop;
+package com.cogop.riverrougecogop.Notes;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.cogop.riverrougecogop.R;
 
 import java.util.List;
 
@@ -56,7 +58,7 @@ NotesAdapter(Context context,List<Note> notes){
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                        Intent i = new Intent(v.getContext(), Details.class);
+                        Intent i = new Intent(v.getContext(), com.cogop.riverrougecogop.Details.class);
                         i.putExtra("ID", notes.get(getAdapterPosition()).getID());
                         v.getContext().startActivity(i);
                 }

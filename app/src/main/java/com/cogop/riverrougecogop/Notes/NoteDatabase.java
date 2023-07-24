@@ -1,4 +1,4 @@
-package com.cogop.riverrougecogop;
+package com.cogop.riverrougecogop.Notes;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -25,7 +25,7 @@ public class NoteDatabase extends SQLiteOpenHelper {
     private static final String KEY_DATE = "date";
     private static final String KEY_TIME = "time";
 
-    NoteDatabase(Context context){
+    public NoteDatabase(Context context){
         super(context,DATABASE_NAME,null,DATABASE_VERSION);
     }
 
@@ -100,7 +100,7 @@ public class NoteDatabase extends SQLiteOpenHelper {
     }
 
 
-    void deleteNote(long id){
+    public void deleteNote(long id){
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_NAME, KEY_ID+"=?",new String[]{String.valueOf(id)});
         db.close();

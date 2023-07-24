@@ -27,7 +27,7 @@
         android:theme="@style/Theme.RiverRougeCOGOP">
         <!-- Settings -->
         <activity
-            android:name=".SettingsActivity"
+            android:name=".Settings.SettingsActivity"
             android:exported="true"
             android:label="@string/title_activity_settings"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
@@ -41,17 +41,17 @@
             </intent-filter>
 
         </service>
-        <activity android:name=".Edit" />
+        <activity android:name=".Notes.Edit" />
         <!-- Details -->
         <activity
             android:name=".Details"
             android:label="@string/title_activity_details"
             android:theme="@style/Theme.RiverRougeCOGOP.NoActionBar" />
         <!-- Add Note -->
-        <activity android:name=".AddNote">
+        <activity android:name=".Notes.AddNote">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".NotesMainActivity" />
+                android:value=".Notes.NotesMainActivity" />
         </activity>
         <!-- Video Player -->
         <activity android:name=".VideoPlayActivity" />
@@ -62,18 +62,18 @@
             android:theme="@style/Theme.RiverRougeCOGOP.NoActionBar" />
         <!-- Announcements -->
         <activity
-            android:name=".Announcements"
+            android:name=".Announcements.Announcements"
             android:label="Announcements"
             android:enabled="true"
             android:exported="true"/>
 
         <!-- Bible -->
         <activity
-            android:name=".Bible"
+            android:name=".Bible.Bible"
             android:label="Bible" />
         <!-- Notes Main -->
         <activity
-            android:name=".NotesMainActivity"
+            android:name=".Notes.NotesMainActivity"
             android:label="NotesMainActivity" />
         <activity
             android:name=".landscape"

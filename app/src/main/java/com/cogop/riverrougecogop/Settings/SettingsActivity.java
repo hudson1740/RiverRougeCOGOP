@@ -1,8 +1,10 @@
-package com.cogop.riverrougecogop;
+package com.cogop.riverrougecogop.Settings;
 
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.cogop.riverrougecogop.R;
+import com.cogop.riverrougecogop.Settings.SettingsFragment;
 import com.cogop.riverrougecogop.ui.dashboard.DashboardFragment;
 
 public class SettingsActivity extends AppCompatActivity {

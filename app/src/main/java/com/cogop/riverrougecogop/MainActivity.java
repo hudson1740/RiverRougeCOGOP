@@ -1,7 +1,7 @@
 package com.cogop.riverrougecogop;
 
+import com.cogop.riverrougecogop.Announcements.Announcements;
 import static android.content.ContentValues.TAG;
-
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
@@ -36,6 +36,10 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.cogop.riverrougecogop.Announcements.Announcements;
+import com.cogop.riverrougecogop.Bible.BibleVersesProvider;
+import com.cogop.riverrougecogop.Notes.NotesMainActivity;
+import com.cogop.riverrougecogop.Settings.SettingsActivity;
 import com.cogop.riverrougecogop.adapter.MyCustomAdapter;
 import com.cogop.riverrougecogop.model.VideoDetails;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
