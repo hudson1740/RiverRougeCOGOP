@@ -38,7 +38,7 @@
         android:textAlignment="center"
         android:text="@string/AnnouncementsDesc"
         android:textStyle="bold"
-        android:textColor="@color/red"
+        android:textColor="@color/lightblue"
         android:textSize="@dimen/_10sdp"/>
 
     <androidx.recyclerview.widget.RecyclerView

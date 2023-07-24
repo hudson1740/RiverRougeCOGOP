@@ -24,7 +24,7 @@
                 android:layout_height="wrap_content">
                 <!-- Menu   -->
                 <ImageButton
-                    android:id="@+id/imageButton"
+                    android:id="@+id/menuButton"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:background="@color/black"
@@ -40,7 +40,21 @@
                     android:onClick="landscape"
                     android:src="@drawable/rotate"
                     tools:ignore="UsingOnClickInXml" />-->
+                <TextView
+                    android:id="@+id/bishopText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="22dp"
+                    android:layout_toRightOf="@id/menuButton"
+                    android:layout_toLeftOf="@id/settingsButton"
+                    android:gravity="center"
+                    android:text="Bishop Lenoard Clarke"
+                    android:textSize="@dimen/_13sdp"
+                    android:textColor="@color/white"
+                    android:textStyle="italic|bold" />
+
                 <ImageButton
+                    android:id="@+id/settingsButton"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/_35sdp"
                     android:layout_alignParentEnd="true"
@@ -81,6 +95,7 @@
                 android:textSize="@dimen/_15sdp"
                 android:textStyle="bold"
                 android:autoSizeTextType="uniform"/>
+
 
             <TextView
                 android:id="@+id/addressText"
