@@ -42,6 +42,7 @@ import com.cogop.riverrougecogop.Settings.SettingsActivity;
 import com.cogop.riverrougecogop.Settings.SettingsFragment;
 import com.cogop.riverrougecogop.adapter.MyCustomAdapter;
 import com.cogop.riverrougecogop.model.VideoDetails;
+import com.cogop.riverrougecogop.ui.dashboard.DashboardFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.messaging.FirebaseMessaging;
 
@@ -52,6 +53,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
+    private boolean backPressedToExit = false;
+
     // Identifires ------------------------------------------------//
     DrawerLayout drawerLayout;
     WebView web;
@@ -88,7 +91,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setTheme(R.style.LightTheme);
         this.supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
-
 
 
         //firebase messaging
@@ -164,8 +166,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
         // Save the current timestamp
-            long currentTimestamp = System.currentTimeMillis();
-            getSharedPreferences("MainActivity", Context.MODE_PRIVATE).edit().putLong("timestamp", currentTimestamp).apply();
+        long currentTimestamp = System.currentTimeMillis();
+        getSharedPreferences("MainActivity", Context.MODE_PRIVATE).edit().putLong("timestamp", currentTimestamp).apply();
     }
 
     private void displayVideos() {
@@ -291,8 +293,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void help(View view) {
-            Toast.makeText(this, "This option is under development, please look for upcoming updates", Toast.LENGTH_LONG).show();
-        }
+        Toast.makeText(this, "This option is under development, please look for upcoming updates", Toast.LENGTH_LONG).show();
+    }
 
 
     public void cashapp(View view) {
@@ -355,16 +357,33 @@ public class MainActivity extends AppCompatActivity {
         // Initial display of a random verse
         displayRandomVerse();
     }
+
+
+    @Override
+    public void onBackPressed() {
+        // Get the NavController for the navigation host fragment
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+
+        // Check if there is a previous destination in the back stack
+        if (navController.getPreviousBackStackEntry() != null) {
+            // If there is a previous destination, navigate back to it
+            navController.popBackStack();
+        } else {
+            // If there is no previous destination, set the flag to indicate back press for exit
+            backPressedToExit = true;
+            super.onBackPressed();
+        }
+    }
+
     @Override
     protected void onUserLeaveHint() {
         super.onUserLeaveHint();
-        // This method is called when the user navigates away from the app,
-        // such as by pressing the Home button.
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
 
-        // Perform any necessary cleanup or shutdown tasks here
-
-        // Finish the activity to fully shut down the app
-        finish();
+        if (navController.getPreviousBackStackEntry() != null) {
+            navController.popBackStack(); }
+            else{
+            finish();
+        }
     }
-
 }
