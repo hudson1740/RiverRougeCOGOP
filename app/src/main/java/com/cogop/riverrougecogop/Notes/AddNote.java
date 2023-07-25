@@ -8,10 +8,12 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -30,10 +32,15 @@ String currentTime;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_note);
 
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setTitle("Your Title");
+        }
+
         toolbar = findViewById(R.id.toolbar);
-        toolbar.setTitleTextColor(getResources() .getColor(R.color.white));
-        getSupportActionBar().setTitle("New Note");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setTitleTextColor(getResources().getColor(R.color.white));
+        setSupportActionBar(toolbar); // Uncomment this line to set the Toolbar as the ActionBar
+
         //setSupportActionBar(toolbar);
 
         noteTitle = findViewById(R.id.noteTitle);
@@ -42,7 +49,6 @@ String currentTime;
         noteTitle.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
             }
 
             @Override
@@ -51,7 +57,6 @@ String currentTime;
                         getSupportActionBar().setTitle(s);
                     }
             }
-
             @Override
             public void afterTextChanged(Editable s) {
 
@@ -104,4 +109,8 @@ String currentTime;
     public void onBackPressed() {
         super.onBackPressed();
     }
+    public void saveNote(View view) {
+
+    }
 }
+

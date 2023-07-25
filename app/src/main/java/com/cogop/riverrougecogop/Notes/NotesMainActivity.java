@@ -1,16 +1,19 @@
 package com.cogop.riverrougecogop.Notes;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.cogop.riverrougecogop.MainActivity;
 import com.cogop.riverrougecogop.R;
 
 import java.util.List;
@@ -40,6 +43,10 @@ public class NotesMainActivity extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.add_menu,menu);
         return true;
+    }
+    public void addNoteButton(View view) {
+        Intent intent = new Intent(this, AddNote.class);
+        startActivityForResult(intent, 0);
     }
 
     @Override

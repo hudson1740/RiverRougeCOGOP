@@ -12,6 +12,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
@@ -43,6 +44,7 @@ import com.cogop.riverrougecogop.Settings.SettingsActivity;
 import com.cogop.riverrougecogop.adapter.MyCustomAdapter;
 import com.cogop.riverrougecogop.model.VideoDetails;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.messaging.FirebaseMessaging;
 
@@ -137,7 +139,6 @@ public class MainActivity extends AppCompatActivity{
                     String token = task.getResult();
                     Log.d(TAG, "FCM Registration Token: " + token);
                 });
-
         setContentView(R.layout.nav_activity_main);
         textViewVerse = findViewById(R.id.textViewVerse);
         listView = findViewById(R.id.listview1);
@@ -247,7 +248,10 @@ public class MainActivity extends AppCompatActivity{
         Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://bit.ly/RRCOGOP"));
         startActivity(browserIntent);
     }
-
+    public void youtubeclick(View view) {
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/@riverrougecogop5011/featured"));
+        startActivity(browserIntent);
+    }
     public void fbbtn(View view) {
         Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/RiverRougeCOGOP"));
         startActivity(browserIntent);
@@ -290,7 +294,6 @@ public class MainActivity extends AppCompatActivity{
         Intent bibleintent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.google.com"));
         startActivity(bibleintent);
     }
-
     public void announcementsbtn(View view) {
         Intent announcements = new Intent(view.getContext(), Announcements.class);
         startActivity(announcements);

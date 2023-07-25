@@ -5,11 +5,13 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.cogop.riverrougecogop.Announcements.Announcements;
 import com.cogop.riverrougecogop.R;
 
 import java.util.List;
@@ -17,7 +19,6 @@ import java.util.List;
 public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> {
 LayoutInflater inflater;
 List<Note> notes;
-
 NotesAdapter(Context context,List<Note> notes){
     this.inflater = LayoutInflater.from(context);
     this.notes = notes;
@@ -29,6 +30,7 @@ NotesAdapter(Context context,List<Note> notes){
         View view = inflater.inflate(R.layout.custom_list_view,viewGroup, false);
         return new ViewHolder(view);
     }
+
 
     @Override
     public void onBindViewHolder(@NonNull NotesAdapter.ViewHolder viewHolder, int i) {
