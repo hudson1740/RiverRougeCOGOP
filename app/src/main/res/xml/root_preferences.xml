@@ -1,3 +1,4 @@
+<!-- root_preferences.xml -->
 <androidx.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
@@ -8,9 +9,12 @@
         app:allowDividerBelow="true"
         android:iconSpaceReserved="false">
 
+        <!-- Custom Preference -->
+        <Preference
+            android:key="custom_preference"
+            android:layout="@layout/preference_custom" />
 
     </PreferenceCategory>
-
 
     <!-- Add more preferences here if needed -->
 

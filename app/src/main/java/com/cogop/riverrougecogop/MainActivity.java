@@ -1,18 +1,19 @@
 package com.cogop.riverrougecogop;
 
+import androidx.fragment.app.Fragment;
 import com.cogop.riverrougecogop.Announcements.Announcements;
+import com.cogop.riverrougecogop.Settings.SettingsFragment;
 import static android.content.ContentValues.TAG;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.Handler;
 import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
@@ -22,14 +23,12 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
-import androidx.preference.PreferenceManager;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -37,15 +36,13 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.cogop.riverrougecogop.Announcements.Announcements;
 import com.cogop.riverrougecogop.Bible.BibleVersesProvider;
 import com.cogop.riverrougecogop.Notes.NotesMainActivity;
 import com.cogop.riverrougecogop.Settings.SettingsActivity;
+import com.cogop.riverrougecogop.Settings.SettingsFragment;
 import com.cogop.riverrougecogop.adapter.MyCustomAdapter;
 import com.cogop.riverrougecogop.model.VideoDetails;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.messaging.FirebaseMessaging;
 
 import org.json.JSONArray;
@@ -53,9 +50,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Random;
 
-public class MainActivity extends AppCompatActivity{
+public class MainActivity extends AppCompatActivity {
     // Identifires ------------------------------------------------//
     DrawerLayout drawerLayout;
     WebView web;
@@ -70,39 +66,6 @@ public class MainActivity extends AppCompatActivity{
     private TextView textViewVerse;
     private CountDownTimer verseTimer;
     private long remainingTime;
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        Log.d("MainActivity", "onStart() called");
-
-        boolean isZoomInstalled = checkInstallation(MainActivity.this, "us.zoom.videomeetings");
-        TextView myTextView = findViewById(R.id.textView44);
-
-        if (isZoomInstalled) {
-            // Zoom is installed
-            myTextView.setTextColor(Color.parseColor("#32CD32")); // Green color
-            myTextView.setText(R.string.zoom_installed_yes);
-            Log.d("ZoomInstallation", "Zoom is installed.");
-        } else {
-            // Zoom is not installed
-            myTextView.setTextColor(Color.parseColor("#ECF400")); // Yellow color
-            myTextView.setText(R.string.zoom_installed_no);
-            Log.d("ZoomInstallation", "Zoom is not installed.");
-        }
-    }
-
-
-  /*  @Override
-    public void onConfigurationChanged(Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
-        // Check the new orientation
-        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            setContentView(R.layout.fragment_dashboard_landscape);
-        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
-            setContentView(R.layout.fragment_dashboard);
-        }
-    }*/
 
     public static boolean checkInstallation(Context context, String packageName) {
         // on below line creating a variable for package manager.
@@ -125,6 +88,8 @@ public class MainActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setTheme(R.style.LightTheme);
         this.supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
+
+
 
         //firebase messaging
         // Get the Firebase Messaging token
@@ -177,16 +142,18 @@ public class MainActivity extends AppCompatActivity{
             } else {
                 // Less than 12 hours have passed, resume the timer with the remaining time
                 long remainingTime = 12 * 60 * 60 * 1000 - elapsedTime;
-                startVerseTimer(remainingTime);
+                startVerseTimer((int) remainingTime);
             }
         }
     }
+
     //navigation menu items make sure it is MenuItem item note View view !!!!!
     public void giveButton(MenuItem item) {
         // Your action when the "Give (offering, donations etc.)" item is clicked
         Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://cash.app/$RiverRougeCOGOP"));
         startActivity(browserIntent);
     }
+
     public void announcebtn(MenuItem item) {
         Intent announcementsIntent = new Intent(this, Announcements.class);
         startActivity(announcementsIntent);
@@ -248,10 +215,12 @@ public class MainActivity extends AppCompatActivity{
         Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://bit.ly/RRCOGOP"));
         startActivity(browserIntent);
     }
+
     public void youtubeclick(View view) {
         Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/@riverrougecogop5011/featured"));
         startActivity(browserIntent);
     }
+
     public void fbbtn(View view) {
         Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/RiverRougeCOGOP"));
         startActivity(browserIntent);
@@ -294,6 +263,7 @@ public class MainActivity extends AppCompatActivity{
         Intent bibleintent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.google.com"));
         startActivity(bibleintent);
     }
+
     public void announcementsbtn(View view) {
         Intent announcements = new Intent(view.getContext(), Announcements.class);
         startActivity(announcements);
@@ -321,13 +291,14 @@ public class MainActivity extends AppCompatActivity{
     }
 
     public void help(View view) {
-    }
+            Toast.makeText(this, "This option is under development, please look for upcoming updates", Toast.LENGTH_LONG).show();
+        }
+    
 
-    public void cashapp(View view){
+    public void cashapp(View view) {
         Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://cash.app/$RiverRougeCOGOP"));
         startActivity(browserIntent);
     }
-
 
     DrawerLayout mMenu;
 
@@ -352,8 +323,22 @@ public class MainActivity extends AppCompatActivity{
         textViewVerse.setText(randomVerse);
     }
 
-    private void startVerseTimer(long duration) {
-        verseTimer = new CountDownTimer(duration, 1000) {
+    private Handler handler = new Handler();
+    private Runnable verseUpdateRunnable = new Runnable() {
+        @Override
+        public void run() {
+            // Display a new random verse
+            displayRandomVerse();
+            // Schedule the next update after 2 minutes
+            handler.postDelayed(this, 2 * 60 * 1000); // 2 minutes in milliseconds
+        }
+    };
+
+
+    private final long VERSE_UPDATE_INTERVAL = 2 * 60 * 1000; // 2 minutes in milliseconds
+
+    private void startVerseTimer(int i) {
+        verseTimer = new CountDownTimer(VERSE_UPDATE_INTERVAL, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
                 remainingTime = millisUntilFinished;
@@ -361,10 +346,9 @@ public class MainActivity extends AppCompatActivity{
 
             @Override
             public void onFinish() {
-                // Timer finished, display a new random verse
+                // Timer finished, display a new random verse and restart the timer
                 displayRandomVerse();
-                // Restart the timer
-                startVerseTimer(12 * 60 * 60 * 1000); // 12 hours in milliseconds
+                startVerseTimer(2 * 60 * 1000);
             }
         }.start();
 
