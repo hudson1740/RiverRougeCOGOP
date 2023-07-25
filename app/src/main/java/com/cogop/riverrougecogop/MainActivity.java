@@ -164,8 +164,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
         // Save the current timestamp
-        long currentTimestamp = System.currentTimeMillis();
-        getSharedPreferences("MainActivity", Context.MODE_PRIVATE).edit().putLong("timestamp", currentTimestamp).apply();
+            long currentTimestamp = System.currentTimeMillis();
+            getSharedPreferences("MainActivity", Context.MODE_PRIVATE).edit().putLong("timestamp", currentTimestamp).apply();
     }
 
     private void displayVideos() {
@@ -293,7 +293,7 @@ public class MainActivity extends AppCompatActivity {
     public void help(View view) {
             Toast.makeText(this, "This option is under development, please look for upcoming updates", Toast.LENGTH_LONG).show();
         }
-    
+
 
     public void cashapp(View view) {
         Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://cash.app/$RiverRougeCOGOP"));
@@ -355,4 +355,16 @@ public class MainActivity extends AppCompatActivity {
         // Initial display of a random verse
         displayRandomVerse();
     }
+    @Override
+    protected void onUserLeaveHint() {
+        super.onUserLeaveHint();
+        // This method is called when the user navigates away from the app,
+        // such as by pressing the Home button.
+
+        // Perform any necessary cleanup or shutdown tasks here
+
+        // Finish the activity to fully shut down the app
+        finish();
+    }
+
 }
