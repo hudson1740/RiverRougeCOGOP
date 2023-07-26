@@ -1,4 +1,4 @@
-## ProNotes: Privacy policy
+## RiverRougeCOGOP: Privacy policy
 
 Thank you for using our app!
 
@@ -7,21 +7,17 @@ This is an open-source Android app developed by Brett Tech Networking The source
 As an avid Android user myself, I take privacy very seriously.
 I know how irritating it is when apps collect your data without your knowledge.
 
-We hereby state, to the best of my knowledge and belief, that we have not programmed this app to collect any personally identifiable information, if you find this
+We hereby state, to the best of my knowledge and belief, that we have not programmed this app to collect any personally identifiable information if you find this
 to be in error please reach out immediately to our team at support@brett-techrepair.com Subject COGOP APP. 
 
 ### Explanation of permissions requested in the app
-
-The list of permissions required by the app can be found in the `AndroidManifest.xml` file:
-
-https://github.com/Brett-Tech-Networking/ProNotes/blob/main/app/src/main/AndroidManifest.xml
 <br/>
 
 | Permission | Why it is required |
 | :---: | --- |
 | `android.permission.INTERNET` | This is required to access items in the app such as connecting to our cash app, bible app, and updated announcements |
 | `android.permission.ACCESS_NETWORK_STATE` | This may be used to determine if our push notification system is able to based on online status |
-| `com.google.android.c2dm.permission.SEND` | This is required so our team may push notifications to your device for things such as upcoming events, announcements etc. |
+| `com.google.android.c2dm.permission.SEND` | This is required so our team may push notifications to your device for things such as upcoming events, announcements, etc. |
 
  <hr style="border:1px solid gray">
 
