@@ -18,6 +18,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.webkit.WebView;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -148,6 +149,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
+
 
     //navigation menu items make sure it is MenuItem item note View view !!!!!
     public void giveButton(MenuItem item) {
@@ -292,10 +294,12 @@ public class MainActivity extends AppCompatActivity {
         startActivityForResult(settingsintent, 0);
     }
 
-    public void help(View view) {
-        Toast.makeText(this, "This option is under development, please look for upcoming updates", Toast.LENGTH_LONG).show();
-    }
+    public void giving(View view) {
+        Intent givingintent  = new Intent(view.getContext(), Giving.class);
+        startActivity(givingintent);
 
+        // Toast.makeText(this, "This option is under development, please look for upcoming updates", Toast.LENGTH_LONG).show();
+    }
 
     public void cashapp(View view) {
         Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://cash.app/$RiverRougeCOGOP"));
@@ -374,6 +378,7 @@ public class MainActivity extends AppCompatActivity {
             super.onBackPressed();
         }
     }
+
 
     @Override
     protected void onUserLeaveHint() {

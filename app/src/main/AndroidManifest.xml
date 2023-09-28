@@ -75,10 +75,14 @@
         <activity
             android:name=".Notes.NotesMainActivity"
             android:label="NotesMainActivity" />
+        <!-- Landscape -->
         <activity
             android:name=".landscape"
             android:label="landscape" />
-
+        <!-- Giving -->
+        <activity
+            android:name=".Giving"
+            android:label="Giving"/>
 
         <!-- Main Activity -->
         <activity

@@ -24,7 +24,7 @@ public class DashboardFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_dashboard, container, false);
 
-        textView44 = view.findViewById(R.id.textView44); // Find the textView44 in the DashboardFragment layout
+      //  textView44 = view.findViewById(R.id.textView44); // Find the textView44 in the DashboardFragment layout
         preferences = androidx.preference.PreferenceManager.getDefaultSharedPreferences(requireContext());
 
         // Get the preference value and update the visibility of textView44

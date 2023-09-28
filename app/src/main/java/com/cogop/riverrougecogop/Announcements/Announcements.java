@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.cogop.riverrougecogop.Announcements.AnnouncementsAdapter;
+import com.cogop.riverrougecogop.MainActivity;
 import com.cogop.riverrougecogop.R;
 import com.cogop.riverrougecogop.ui.dashboard.DashboardFragment;
 import com.google.firebase.database.DataSnapshot;
@@ -34,31 +35,14 @@ public class Announcements extends AppCompatActivity {
     private AnnouncementsAdapter announcementsAdapter;
     private List<String> announcementsList;
     ImageButton backButton1;
-
+    public void backButton1(View view) {
+        Intent givingintent  = new Intent(view.getContext(), MainActivity.class);
+        startActivity(givingintent);
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.announcements_activity);
-
-        // Inside the onCreate method after finding the ImageButton by its ID
-        ImageButton backButton = findViewById(R.id.backButton1);
-
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Get the NavController for the navigation host fragment
-                NavController navController = Navigation.findNavController(Announcements.this, R.id.nav_host_fragment);
-
-                // Check if there is a previous destination in the back stack
-                if (navController.getPreviousBackStackEntry() != null) {
-                    // If there is a previous destination, navigate back to it
-                    navController.popBackStack();
-                } else {
-                    // If there is no previous destination, finish the activity
-                    finish();
-                }
-            }
-        });
 
         // Setup RecyclerView and Firebase Database reference
         DatabaseReference announcementsRef = FirebaseDatabase.getInstance().getReference().child("announcements");

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="15dp"
+    android:background="@color/black">
+<!--Toolbar: BackButton -->
+    <Toolbar
+        android:id="@+id/announcementsToolbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageButton
+            android:id="@+id/backButtonGiving"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:onClick="backButtonGiving"
+            android:layout_marginStart="1dp"
+            android:background="@color/black"
+            android:src="@drawable/ic_back"
+            android:focusable="true" />
+    </Toolbar>
+
+    <!-- Title -->
+    <TextView
+        android:id="@+id/textViewTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/giving"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/holo_red_dark"
+        android:layout_gravity="center"
+        android:layout_marginBottom="14dp"/>
+
+    <!-- Description -->
+    <TextView
+        android:id="@+id/textViewDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/GivingDesc"
+        android:textSize="16sp"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:layout_gravity="center"
+        android:layout_marginBottom="24dp"/>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_gravity="center"
+    android:padding="16dp"
+    android:background="@drawable/border_giving">
+
+    <!-- PayPal Button -->
+    <ImageView
+        android:id="@+id/imageViewPayPal"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/paypal"
+        android:layout_gravity="center"
+        android:layout_weight=".5"
+        />
+
+    <!-- Cash App Button -->
+    <ImageView
+        android:id="@+id/imageViewCashApp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/cashapp"
+        android:layout_gravity="center"
+        android:layout_weight=".5"/>
+</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:background="@drawable/square_outline">
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Other ways to send"
+    android:layout_marginTop="3dp"
+    android:textColor="@color/red"
+    android:textStyle="bold|italic"
+    android:textAlignment="center"
+    android:layout_gravity="center"
+    android:textSize="18dp">
+</TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:textSize="16dp"
+            android:textStyle="normal"
+            android:text="@string/checks"
+            android:textColor="@color/white">
+        </TextView>
+    </LinearLayout>
+</LinearLayout>
