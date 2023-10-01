@@ -1,6 +1,7 @@
 package com.cogop.riverrougecogop;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 
@@ -21,5 +22,8 @@ public class Giving extends AppCompatActivity {
         Intent givingintent  = new Intent(view.getContext(), MainActivity.class);
         startActivity(givingintent);
     }
-
+    public void cashappgiving(View view) {
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://cash.app/$RiverRougeCOGOP"));
+        startActivity(browserIntent);
+    }
 }

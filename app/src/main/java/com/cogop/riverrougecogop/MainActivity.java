@@ -154,8 +154,8 @@ public class MainActivity extends AppCompatActivity {
     //navigation menu items make sure it is MenuItem item note View view !!!!!
     public void giveButton(MenuItem item) {
         // Your action when the "Give (offering, donations etc.)" item is clicked
-        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://cash.app/$RiverRougeCOGOP"));
-        startActivity(browserIntent);
+        Intent giveintent  = new Intent(this, Giving.class);
+        startActivity(giveintent);
     }
 
     public void announcebtn(MenuItem item) {
@@ -284,8 +284,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void notesbtn(View view) {
-        Intent notesintent = new Intent(MainActivity.this, NotesMainActivity.class);
-        startActivityForResult(notesintent, 0);
+        Toast.makeText(MainActivity.this, "This option is under development, please look for upcoming updates", Toast.LENGTH_LONG).show();
+
+        /*Intent notesintent = new Intent(MainActivity.this, NotesMainActivity.class);
+        startActivityForResult(notesintent, 0);*/
     }
 
 
