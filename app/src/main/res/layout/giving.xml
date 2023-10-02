@@ -106,8 +106,12 @@
     </LinearLayout>
 
     <ImageView
-        android:layout_width="wrap_content"
+        android:id="@+id/Giving_Image"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/giving1"
+        android:src="@drawable/giving2"
+        android:layout_gravity="center"
+
+
         />
 </LinearLayout>
