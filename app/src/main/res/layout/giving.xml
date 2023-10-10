@@ -47,36 +47,36 @@
         android:textColor="@android:color/white"
         android:layout_gravity="center"
         android:layout_marginBottom="24dp"/>
+    <androidx.fragment.app.FragmentContainerView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <!-- Giving Buttons -->
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
+    android:orientation="horizontal"
+    android:weightSum="2"
     android:layout_gravity="center"
     android:padding="16dp"
     android:background="@drawable/border_giving">
-
-    <!-- Cash App Button -->
-    <ImageView
-        android:id="@+id/imageViewCashApp"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:src="@drawable/cashapp"
-        android:onClick="cashappgiving"
-        android:layout_gravity="center"
-        android:layout_weight=".5"/>
-    <TextView
-        android:layout_width="wrap_content"
+    <include
+        android:layout_weight="1"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Cash App"
-        android:textColor="@color/lightblue"
-        android:textAlignment="center"
-        android:textStyle="bold"
-        android:layout_marginTop="5dp"
-        android:layout_gravity="center"
-        android:textSize="20dp"/>
+        layout="@layout/cashapp_giving"
+        />
+    <include
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        layout="@layout/check_giving"
+        />
 
 </LinearLayout>
-    <LinearLayout
+
+
+  <!--  <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -102,8 +102,8 @@
             android:layout_marginLeft="15dp"
             android:text="@string/checks"
             android:textColor="@color/white">
-        </TextView>
-    </LinearLayout>
+        </TextView>-->
+ <!--   </LinearLayout>-->
 
     <ImageView
         android:id="@+id/Giving_Image"
