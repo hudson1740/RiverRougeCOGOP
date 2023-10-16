@@ -95,14 +95,14 @@ public class MainActivity extends AppCompatActivity {
         setTheme(R.style.LightTheme);
         this.supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
 
+        // ---------- Asks user permission for notification permissions for push notification use -------- //
         int permissionState = ContextCompat.checkSelfPermission(this, android.Manifest.permission.POST_NOTIFICATIONS);
         // If the permission is not granted, request it.
         if (permissionState == PackageManager.PERMISSION_DENIED) {
             ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.POST_NOTIFICATIONS}, 1);
         }
 
-        //firebase messaging
-        // Get the Firebase Messaging token
+        //firebase messaging // Get the Firebase Messaging token
         FirebaseMessaging.getInstance().getToken()
                 .addOnCompleteListener(task -> {
                     if (!task.isSuccessful()) {

@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
+
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -30,7 +32,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Announcements extends AppCompatActivity {
-
     private RecyclerView recyclerView;
     private AnnouncementsAdapter announcementsAdapter;
     private List<String> announcementsList;
@@ -80,5 +81,18 @@ public class Announcements extends AppCompatActivity {
                 // Handle any errors that occur while reading data
             }
         });
+    }
+    // Custom method to navigate back to MainActivity
+    private void navigateToMainActivity() {
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // Clear the back stack
+        startActivity(intent);
+        finish(); // Finish the current activity
+    }
+
+    // Override the onBackPressed method to use our custom behavior
+    @Override
+    public void onBackPressed() {
+        navigateToMainActivity();
     }
 }

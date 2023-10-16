@@ -1,16 +1,23 @@
 package com.cogop.riverrougecogop.Settings;
 
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
+import com.cogop.riverrougecogop.MainActivity;
 import com.cogop.riverrougecogop.R;
 import com.cogop.riverrougecogop.Settings.SettingsFragment;
 import com.cogop.riverrougecogop.ui.dashboard.DashboardFragment;
+
+import java.util.Objects;
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -46,23 +53,35 @@ public class SettingsActivity extends AppCompatActivity {
             return false; // Package is not installed
         }
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-// Replace the existing fragment with the SettingsFragment
+
+        // Replace the existing fragment with the SettingsFragment
         getSupportFragmentManager().beginTransaction()
                 .replace(android.R.id.content, new SettingsFragment()) // Use the correct Fragment type
                 .commit();
+    }
 
-        // Initialize the SettingsFragment
-        SettingsFragment settingsFragment = new SettingsFragment();
+    @Override
+    public boolean onSupportNavigateUp() {
+        // Handle the up button click
+        onBackPressed();
+        return true;
+    }
 
+    private void navigateToMainActivity() {
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // Clear the back stack
+        startActivity(intent);
+        finish(); // Finish the current activity
+    }
 
-        getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.settings, settingsFragment)
-                .commit();
+    @Override
+    public void onBackPressed() {
+        navigateToMainActivity();
     }
 }

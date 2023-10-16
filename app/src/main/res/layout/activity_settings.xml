@@ -27,6 +27,11 @@
             android:background="?android:attr/selectableItemBackgroundBorderless"/>
 
     </androidx.appcompat.widget.Toolbar>-->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/customToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary" />
 
     <!-- PreferenceFragment container -->
     <FrameLayout
