@@ -25,6 +25,7 @@ import java.util.Locale;
 public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> {
 LayoutInflater inflater;
 List<Note> notes;
+
 private OnDeleteClickListener onDeleteClickListener;
 NotesAdapter(Context context,List<Note> notes, OnDeleteClickListener onDeleteClickListener){
     this.inflater = LayoutInflater.from(context);
@@ -81,10 +82,8 @@ NotesAdapter(Context context,List<Note> notes, OnDeleteClickListener onDeleteCli
             });
         }
     }
-    interface OnDeleteClickListener{
+    interface OnDeleteClickListener {
         void onItemDelete(Note note);
 
         void onItemClick(Note note);
-    }
-
-}
+    }}

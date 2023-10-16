@@ -20,5 +20,7 @@
     <color name="colorPrimary">#2196F3</color>
     <color name="primaryBackground">#2196F3</color>
 
+    <color name="search">#00FFFFFF</color>
+
 
 </resources>

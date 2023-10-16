@@ -10,12 +10,14 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.cogop.riverrougecogop.Notes.Note;
 import com.cogop.riverrougecogop.R;
 import com.cogop.riverrougecogop.VideoPlayActivity;
 import com.cogop.riverrougecogop.model.VideoDetails;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MyCustomAdapter extends BaseAdapter {
 
@@ -23,6 +25,7 @@ public class MyCustomAdapter extends BaseAdapter {
     Activity activity;
     ArrayList<VideoDetails> videoDetailsArrayList;
     LayoutInflater inflater;
+
 
     public MyCustomAdapter(Activity activity, ArrayList<VideoDetails> videoDetailsArrayList) {
         this.activity = activity;
@@ -82,4 +85,3 @@ public class MyCustomAdapter extends BaseAdapter {
         return this.videoDetailsArrayList.size();
     }
 }
-

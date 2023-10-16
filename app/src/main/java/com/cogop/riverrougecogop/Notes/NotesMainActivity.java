@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +24,7 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import com.cogop.riverrougecogop.MainActivity;
 import com.cogop.riverrougecogop.Notes.database.NoteRepository;
 import com.cogop.riverrougecogop.R;
+import com.cogop.riverrougecogop.adapter.MyCustomAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +36,10 @@ public class NotesMainActivity extends AppCompatActivity implements NotesAdapter
     NotesAdapter adapter;
     List<Note> allNotes = new ArrayList<>();
     TextView noNoteFound;
+    SearchView searchView_home;
+    MyCustomAdapter notesListAdapter;
+
+
 
     private NoteRepository noteRepository;
     private NotesAdapter.OnDeleteClickListener onDeleteClickListener;
@@ -44,6 +50,8 @@ public class NotesMainActivity extends AppCompatActivity implements NotesAdapter
         setContentView(R.layout.notes_main_activity);
         toolbar = findViewById(R.id.toolbar);
         noNoteFound = findViewById(R.id.no_note_found);
+        searchView_home = findViewById(R.id.searchView_home);
+
 
 //my code
         Toolbar actionBar = findViewById(R.id.toolbar);
@@ -77,7 +85,15 @@ public class NotesMainActivity extends AppCompatActivity implements NotesAdapter
             }
         });
     }
-
+    //note search filter code
+    private void filter(String newText) {
+        List<Note> filteredList = new ArrayList<>();
+        for (Note singleNote : allNotes) {
+            if (singleNote.getNoteTitle().toLowerCase().contains(newText.toLowerCase()) || singleNote.getNoteDescription().toLowerCase().contains(newText.toLowerCase())) {
+                filteredList.add(singleNote);
+            }
+        }
+    }
     @Override
     public void onBackPressed() {
         super.onBackPressed();
