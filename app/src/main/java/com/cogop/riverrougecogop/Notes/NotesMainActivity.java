@@ -26,6 +26,7 @@ import com.cogop.riverrougecogop.R;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class NotesMainActivity extends AppCompatActivity implements NotesAdapter.OnDeleteClickListener {
     Toolbar toolbar;
@@ -43,7 +44,19 @@ public class NotesMainActivity extends AppCompatActivity implements NotesAdapter
         setContentView(R.layout.notes_main_activity);
         toolbar = findViewById(R.id.toolbar);
         noNoteFound = findViewById(R.id.no_note_found);
-        setSupportActionBar(toolbar);
+
+//my code
+        Toolbar actionBar = findViewById(R.id.toolbar);
+        setSupportActionBar(actionBar);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+        actionBar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) { onBackPressed(); } });
+//end my code
+
+       // setSupportActionBar(toolbar);
         recyclerView = findViewById(R.id.listOfNotes);
         RecyclerView.LayoutManager layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
@@ -65,12 +78,15 @@ public class NotesMainActivity extends AppCompatActivity implements NotesAdapter
         });
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
+
     public void addNoteButton(View view) {
         Intent intent = new Intent(this, AddNote.class);
         startActivity(intent);
     }
-
-
     @Override
     public void onItemDelete(Note note) {
          showDeleteDialog(note);
