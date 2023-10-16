@@ -86,4 +86,10 @@ NotesAdapter(Context context,List<Note> notes, OnDeleteClickListener onDeleteCli
         void onItemDelete(Note note);
 
         void onItemClick(Note note);
-    }}
+    }
+    public void setFilter(List<Note> filteredList) {
+        notes = filteredList;
+        notifyDataSetChanged();
+    }
+
+}

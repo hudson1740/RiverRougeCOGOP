@@ -52,6 +52,31 @@ public class NotesMainActivity extends AppCompatActivity implements NotesAdapter
         noNoteFound = findViewById(R.id.no_note_found);
         searchView_home = findViewById(R.id.searchView_home);
 
+        searchView_home.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                // Handle search when the user submits the query.
+                return false;
+            }
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                filter(newText); // Pass the user's search query.
+                return true;
+            }
+        private void filter(String newText) {
+            List<Note> filteredList = new ArrayList<>();
+            for (Note singleNote : allNotes) {
+                if (singleNote.getNoteTitle() != null && singleNote.getNoteDescription() != null) {
+                    if (singleNote.getNoteTitle().toLowerCase().contains(newText.toLowerCase()) ||
+                            singleNote.getNoteDescription().toLowerCase().contains(newText.toLowerCase())) {
+                        filteredList.add(singleNote);
+                    }
+                }
+            }
+
+            adapter.setFilter(filteredList); // Update the RecyclerView adapter with filtered data.
+        }
+        });
 
 //my code
         Toolbar actionBar = findViewById(R.id.toolbar);
