@@ -36,16 +36,16 @@ public class Details extends AppCompatActivity {
        Long id = i.getLongExtra("ID",0);
 
         db = new NoteDatabase(this);
-        note = db.getNote(id);
-        getSupportActionBar().setTitle(note.getTitle());
-        mDetails.setText(note.getContent());
+       // note = db.getNote(id);
+      //  getSupportActionBar().setTitle(note.getTitle());
+      //  mDetails.setText(note.getContent());
 
         // FLOATING BUTTON //
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                db.deleteNote(note.getID());
+              //  db.deleteNote(note.getID());
                 Toast.makeText(getApplicationContext(),"Note Deleted",Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(getApplicationContext(), NotesMainActivity.class));
                 goToMain();
@@ -65,7 +65,7 @@ public class Details extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         if(item.getItemId() == R.id.editNote){
             Intent i = new Intent(this, Edit.class);
-            i.putExtra("ID",note.getID());
+           // i.putExtra("ID",note.getID());
             startActivity(i);
 
         }

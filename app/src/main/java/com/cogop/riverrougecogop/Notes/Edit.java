@@ -32,22 +32,22 @@ public class Edit extends AppCompatActivity {
         Intent i = getIntent();
         long id = i.getLongExtra("ID", 0);
         NoteDatabase db = new NoteDatabase(this);
-        Note note = db.getNote(id);
+      //  Note note = db.getNote(id);
 
         toolbar = findViewById(R.id.toolbar);
         toolbar.setTitleTextColor(getResources() .getColor(R.color.white));
-        getSupportActionBar().setTitle(note.getTitle());
+       // getSupportActionBar().setTitle(note.getTitle());
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setSupportActionBar(toolbar);
 
-        final String title = note.getTitle();
-        String content = note.getContent();
+       // final String title = note.getTitle();
+      //  String content = note.getContent();
         nTitle = findViewById(R.id.noteTitle);
         nContent = findViewById(R.id.noteDetails);
         nTitle.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                getSupportActionBar().setTitle(title);
+              //  getSupportActionBar().setTitle(title);
             }
 
             @Override

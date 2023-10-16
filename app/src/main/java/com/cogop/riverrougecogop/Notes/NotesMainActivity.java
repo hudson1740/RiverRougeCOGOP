@@ -1,61 +1,110 @@
 package com.cogop.riverrougecogop.Notes;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.cogop.riverrougecogop.MainActivity;
+import com.cogop.riverrougecogop.Notes.database.NoteRepository;
 import com.cogop.riverrougecogop.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class NotesMainActivity extends AppCompatActivity {
+public class NotesMainActivity extends AppCompatActivity implements NotesAdapter.OnDeleteClickListener {
     Toolbar toolbar;
     RecyclerView recyclerView;
     NotesAdapter adapter;
-    List<Note> notes;
+    List<Note> allNotes = new ArrayList<>();
+    TextView noNoteFound;
+
+    private NoteRepository noteRepository;
+    private NotesAdapter.OnDeleteClickListener onDeleteClickListener;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        onDeleteClickListener = this;
         setContentView(R.layout.notes_main_activity);
-
         toolbar = findViewById(R.id.toolbar);
+        noNoteFound = findViewById(R.id.no_note_found);
         setSupportActionBar(toolbar);
-        NoteDatabase db = new NoteDatabase(this);
-        notes = db.getNotes();
         recyclerView = findViewById(R.id.listOfNotes);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new NotesAdapter(this,notes);
-        recyclerView.setAdapter(adapter);
+        RecyclerView.LayoutManager layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+        recyclerView.setLayoutManager(layoutManager);
+
+
+        noteRepository = new NoteRepository(getApplication());
+        noteRepository.getAllNotes().observe(this, new Observer<List<Note>>() {
+            @Override
+            public void onChanged(List<Note> notes) {
+                allNotes = notes;
+                adapter = new NotesAdapter(getApplicationContext(),allNotes,onDeleteClickListener);
+                recyclerView.setAdapter(adapter);
+                if (allNotes.size() == 0){
+                    noNoteFound.setVisibility(View.VISIBLE);
+                } else {
+                    noNoteFound.setVisibility(View.GONE);
+                }
+            }
+        });
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.add_menu,menu);
-        return true;
-    }
     public void addNoteButton(View view) {
         Intent intent = new Intent(this, AddNote.class);
-        startActivityForResult(intent, 0);
+        startActivity(intent);
+    }
+
+
+    @Override
+    public void onItemDelete(Note note) {
+         showDeleteDialog(note);
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId() == R.id.add){
-            Intent i = new Intent(this, AddNote.class);
-            startActivity(i);
-            Toast.makeText(this, "Add Note", Toast.LENGTH_SHORT).show();
-        }
-        return super.onOptionsItemSelected(item);
+    public void onItemClick(Note note) {
+        Bundle bundle = new Bundle();
+        bundle.putInt("ID", note.getId());
+        bundle.putString("title",note.getNoteTitle());
+        bundle.putString("description",note.getNoteDescription());
+
+        Intent i = new Intent(NotesMainActivity.this, AddNote.class);
+        i.putExtras(bundle);
+        startActivity(i);
+    }
+
+    private void showDeleteDialog(Note note){
+        AlertDialog.Builder builder = new AlertDialog.Builder(NotesMainActivity.this);
+        builder.setMessage("Do you want to Delete this Note?");
+        builder.setTitle("Delete Note!");
+        builder.setCancelable(false);
+        builder.setPositiveButton("Yes", (DialogInterface.OnClickListener) (dialog, which) -> {
+            Toast.makeText(this,"Note deleted",Toast.LENGTH_SHORT).show();
+            noteRepository.delete(note);
+            dialog.dismiss();
+        });
+
+        builder.setNegativeButton("No", (DialogInterface.OnClickListener) (dialog, which) -> {
+            dialog.cancel();
+        });
+
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+
     }
 }

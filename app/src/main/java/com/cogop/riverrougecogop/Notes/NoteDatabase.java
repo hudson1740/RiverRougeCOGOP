@@ -51,7 +51,7 @@ public class NoteDatabase extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public long addNote (Note note){
+    /*public long addNote (Note note){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues c = new ContentValues();
         c.put(KEY_TITLE,note.getTitle());
@@ -62,9 +62,9 @@ public class NoteDatabase extends SQLiteOpenHelper {
         long ID = db.insert(DATABASE_TABLE, null,c);
         Log.d("Inserted", "ID -> " + ID);
         return ID;
-    }
+    }*/
 
-    public Note getNote(long id){
+   /* public Note getNote(long id){
         //Select * from databaseTable where id = 1
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(DATABASE_TABLE,new String[]{KEY_ID,KEY_TITLE,KEY_CONTENT,KEY_DATE,KEY_TIME}, KEY_ID+"=?",
@@ -74,9 +74,9 @@ public class NoteDatabase extends SQLiteOpenHelper {
 
         return new Note(cursor.getLong(0), cursor.getString(1), cursor.getString(2),
                 cursor.getString(3), cursor.getString(4));
-    }
+    }*/
 
-    public List<Note> getNotes() {
+   /* public List<Note> getNotes() {
         SQLiteDatabase db = this.getReadableDatabase();
         List<Note> allNotes = new ArrayList<>();
         // select *(all) from databaseName
@@ -85,7 +85,7 @@ public class NoteDatabase extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(query, null);
 
         if (cursor.moveToFirst()) {
-            do {
+           *//* do {
                 Note note = new Note();
                 note.setID(cursor.getLong(0));
                 note.setTitle(cursor.getString(1));
@@ -96,13 +96,13 @@ public class NoteDatabase extends SQLiteOpenHelper {
                 allNotes.add(note);
             } while (cursor.moveToNext());
         }
-        return allNotes;
-    }
+        return allNotes;*//*
+    }*/
 
-
+/*
     public void deleteNote(long id){
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_NAME, KEY_ID+"=?",new String[]{String.valueOf(id)});
         db.close();
-    }
+    }*/
 }

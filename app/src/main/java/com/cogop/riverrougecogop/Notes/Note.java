@@ -1,65 +1,65 @@
 package com.cogop.riverrougecogop.Notes;
 
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity(tableName = "note")
 public class Note {
-    private long ID;
-    private String title;
-    private String content;
-    private String date;
-    private String time;
+    @PrimaryKey(autoGenerate = true)
+    private int id;
 
-    Note () {}
-    Note(String title, String content, String date, String time) {
-        this.title = title;
-        this.content = content;
-        this.date = date;
-        this.time = time;
-    }
-    Note(long id, String title, String content, String date, String time)
-    {
-        this.ID = id;
-        this.title = title;
-        this.content = content;
-        this.date = date;
-        this.time = time;
-    }
+    @ColumnInfo(name = "note_title")
+    private String noteTitle;
 
-    public long getID() {
-        return ID;
+    @ColumnInfo(name = "note_description")
+    private String noteDescription ;
+
+    @ColumnInfo(name = "created_at")
+    private long createdAt;
+
+    @ColumnInfo(name = "last_modified")
+    private long lastModified;
+
+    public Note() {}
+
+    public int getId() {
+        return id;
     }
 
-    public void setID(long ID) {
-        this.ID = ID;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public String getNoteTitle() {
+        return noteTitle;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setNoteTitle(String noteTitle) {
+        this.noteTitle = noteTitle;
     }
 
-    public String getContent() {
-        return content;
+    public String getNoteDescription() {
+        return noteDescription;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setNoteDescription(String noteDescription) {
+        this.noteDescription = noteDescription;
     }
 
-    public String getDate() {
-        return date;
+    public long getCreatedAt() {
+        return createdAt;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setCreatedAt(long createdAt) {
+        this.createdAt = createdAt;
     }
 
-    public String getTime() {
-        return time;
+    public long getLastModified() {
+        return lastModified;
     }
 
-    public void setTime(String time) {
-        this.time = time;
+    public void setLastModified(long lastModified) {
+        this.lastModified = lastModified;
     }
 }

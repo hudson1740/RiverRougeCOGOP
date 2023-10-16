@@ -284,10 +284,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void notesbtn(View view) {
-        Toast.makeText(MainActivity.this, "This option is under development, please look for upcoming updates", Toast.LENGTH_LONG).show();
+       // Toast.makeText(MainActivity.this, "This option is under development, please look for upcoming updates", Toast.LENGTH_LONG).show();
 
-        /*Intent notesintent = new Intent(MainActivity.this, NotesMainActivity.class);
-        startActivityForResult(notesintent, 0);*/
+        Intent notesintent = new Intent(MainActivity.this, NotesMainActivity.class);
+        startActivity(notesintent);
     }
 
 

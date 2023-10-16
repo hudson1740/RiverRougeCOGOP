@@ -1,97 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="#F7F3F3">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="160dp"
+    android:background="@drawable/layout_border"
+    android:layout_marginTop="8dp"
+    android:layout_height="220dp">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
+    <ImageView
+        android:id="@+id/notesIcon"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+       android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:src="@drawable/ic_baseline_edit_note_24" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="@dimen/_5sdp"
+        android:layout_below="@+id/notesIcon">
+        <TextView
+            android:id="@+id/nTitle"
             android:layout_height="wrap_content"
-            android:padding="10dp">
+            android:layout_width="0dp"
+            android:text="Sample Note Titleaf dfadfddfdafdsaghafggfgag"
+            android:textColor="@color/lime"
+            android:textSize="16sp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:textStyle="bold" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/constraintLayout4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="5dp">
+        <TextView
+            android:id="@+id/nDetails"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Note description adfd fadf adfd daf adsf add dafad fdfadf ad"
+            android:layout_below="@+id/nTitle"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:textSize="14sp"
+            android:textColor="@color/lime" />
 
-                <ImageView
-                    android:id="@+id/notesIcon"
-                    android:layout_width="99dp"
-                    android:layout_height="81dp"
-                    android:layout_marginEnd="303dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/ic_baseline_edit_note_24" />
+        <TextView
+            android:id="@+id/nDate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="2021/11/07 - 12:32"
+            android:textSize="12sp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:padding="3dp"
+            android:textColor="@color/lime"/>
 
-                <TextView
-                    android:id="@+id/nTime"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="12:15"
-                    android:textSize="16sp"
-                    tools:layout_editor_absoluteX="209dp"
-                    tools:layout_editor_absoluteY="50dp" />
+      <ImageView
+          android:id="@+id/deleteIcon"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:src="@drawable/baseline_delete_24"
+          android:layout_alignParentBottom="true"
+          android:layout_alignParentEnd="true"
+          android:padding="3dp"
+          />
 
-                <TextView
-                    android:id="@+id/nDate"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="2021/11/07"
-                    android:textSize="16sp"
-                    app:layout_constraintTop_toTopOf="@+id/nTime"
-                    tools:layout_editor_absoluteX="115dp" />
+    </RelativeLayout>
 
-                <TextView
-                    android:id="@+id/nDetails"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Note"
-                    android:textColor="@color/black"
-
-                    tools:layout_editor_absoluteX="115dp"
-                    tools:layout_editor_absoluteY="32dp" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                app:layout_constraintBottom_toBottomOf="@+id/constraintLayout4"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/constraintLayout4"
-                app:layout_constraintTop_toTopOf="@+id/constraintLayout4">
-
-                <TextView
-                    android:id="@+id/nTitle"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="115dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:text="Sample Note Title"
-                    android:textColor="#000000"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>
