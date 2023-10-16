@@ -19,6 +19,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         if (remoteMessage.getData().size() > 0) {
             Log.d(TAG, "Data Payload: " + remoteMessage.getData());
             // Process the data payload as required
+
         }
     }
 }

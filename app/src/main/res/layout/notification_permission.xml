@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/dialog_message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="This app would like to send you notifications. Do you want to allow it?"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:paddingBottom="16dp" />
+
+    <Button
+        android:id="@+id/dialog_allow"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="Allow" />
+
+    <Button
+        android:id="@+id/dialog_deny"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Deny" />
+</LinearLayout>

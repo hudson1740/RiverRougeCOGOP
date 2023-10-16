@@ -1,5 +1,7 @@
 package com.cogop.riverrougecogop;
 
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import com.cogop.riverrougecogop.Announcements.Announcements;
 import com.cogop.riverrougecogop.Settings.SettingsFragment;
@@ -93,6 +95,11 @@ public class MainActivity extends AppCompatActivity {
         setTheme(R.style.LightTheme);
         this.supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
 
+        int permissionState = ContextCompat.checkSelfPermission(this, android.Manifest.permission.POST_NOTIFICATIONS);
+        // If the permission is not granted, request it.
+        if (permissionState == PackageManager.PERMISSION_DENIED) {
+            ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.POST_NOTIFICATIONS}, 1);
+        }
 
         //firebase messaging
         // Get the Firebase Messaging token
@@ -102,7 +109,6 @@ public class MainActivity extends AppCompatActivity {
                         Log.w(TAG, "Fetching FCM registration token failed", task.getException());
                         return;
                     }
-
                     // Get the token
                     String token = task.getResult();
                     Log.d(TAG, "FCM Registration Token: " + token);

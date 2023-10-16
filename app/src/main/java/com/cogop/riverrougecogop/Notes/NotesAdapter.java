@@ -53,7 +53,7 @@ NotesAdapter(Context context,List<Note> notes, OnDeleteClickListener onDeleteCli
             }
         });
         Date date = new Date(notes.get(i).getLastModified());
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy/MM/dd - kk:mm", Locale.getDefault());
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/dd/yyyy - hh:mm", Locale.getDefault());
         String time = simpleDateFormat.format(date);
         viewHolder.nDate.setText(time);
     }
