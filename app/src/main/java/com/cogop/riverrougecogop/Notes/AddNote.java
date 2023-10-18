@@ -1,9 +1,14 @@
 package com.cogop.riverrougecogop.Notes;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.Spannable;
+import android.text.SpannableString;
 import android.text.TextWatcher;
+import android.text.style.StyleSpan;
+import android.text.style.UnderlineSpan;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -21,6 +26,7 @@ import androidx.appcompat.widget.Toolbar;
 import com.cogop.riverrougecogop.MainActivity;
 import com.cogop.riverrougecogop.Notes.database.NoteRepository;
 import com.cogop.riverrougecogop.R;
+import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.Calendar;
 
@@ -36,14 +42,22 @@ public class AddNote extends AppCompatActivity {
 
     private int ID;
     private boolean isUpdate = false;
+    private boolean isBold = false;
+    private boolean isItalic = false;
+    private boolean isUnderlined = false;
+    private Toolbar toolbar2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_note);
+        // Get the EditText for noteDetails
+        noteDetails = findViewById(R.id.noteDetails);
+
+        // Set initial style to normal (none)
+        updateNoteDetailsStyle();
 // TOOLBAR 2 -------------------------------------------------
         // Reference to the toolbar2
-        Toolbar toolbar2 = findViewById(R.id.toolbar2);
-
+        toolbar2 = findViewById(R.id.toolbar2);
         // Set toolbar2 as the action bar
         setSupportActionBar(toolbar2);
 
@@ -93,6 +107,94 @@ public class AddNote extends AppCompatActivity {
         listeners();
         checkBundle();
     }
+    private void updateNoteDetailsStyle() {
+        // Create a Spannable to apply styles to text
+        Spannable spannable = new SpannableString(noteDetails.getText());
+
+        if (isBold) {
+            // Apply bold style
+            spannable.setSpan(new StyleSpan(Typeface.BOLD), 0, noteDetails.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        }
+
+        if (isItalic) {
+            // Apply italic style
+            spannable.setSpan(new StyleSpan(Typeface.ITALIC), 0, noteDetails.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        }
+
+        if (isUnderlined) {
+            // Apply underline style
+            spannable.setSpan(new UnderlineSpan(), 0, noteDetails.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        }
+
+        // Update the EditText text with styles
+        noteDetails.setText(spannable);
+    }
+
+    private void toggleBoldStyle() {
+        int startSelection = noteDetails.getSelectionStart();
+        int endSelection = noteDetails.getSelectionEnd();
+        if (startSelection != -1 && endSelection != -1) {
+            isBold = !isBold;
+            Spannable spannable = new SpannableString(noteDetails.getText());
+            if (isBold) {
+                spannable.setSpan(new StyleSpan(Typeface.BOLD), startSelection, endSelection, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+            } else {
+                StyleSpan[] styleSpans = spannable.getSpans(startSelection, endSelection, StyleSpan.class);
+                for (StyleSpan styleSpan : styleSpans) {
+                    if (styleSpan.getStyle() == Typeface.BOLD) {
+                        spannable.removeSpan(styleSpan);
+                    }
+                }
+            }
+            noteDetails.setText(spannable);
+            // Restore the selection
+            noteDetails.setSelection(startSelection, endSelection);
+        }
+    }
+
+    private void toggleItalicStyle() {
+        int startSelection = noteDetails.getSelectionStart();
+        int endSelection = noteDetails.getSelectionEnd();
+        if (startSelection != -1 && endSelection != -1) {
+            isItalic = !isItalic;
+            Spannable spannable = new SpannableString(noteDetails.getText());
+            if (isItalic) {
+                spannable.setSpan(new StyleSpan(Typeface.ITALIC), startSelection, endSelection, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+            } else {
+                StyleSpan[] styleSpans = spannable.getSpans(startSelection, endSelection, StyleSpan.class);
+                for (StyleSpan styleSpan : styleSpans) {
+                    if (styleSpan.getStyle() == Typeface.ITALIC) {
+                        spannable.removeSpan(styleSpan);
+                    }
+                }
+            }
+            noteDetails.setText(spannable);
+            // Restore the selection
+            noteDetails.setSelection(startSelection, endSelection);
+        }
+    }
+
+    private void toggleUnderlineStyle() {
+        int startSelection = noteDetails.getSelectionStart();
+        int endSelection = noteDetails.getSelectionEnd();
+        if (startSelection != -1 && endSelection != -1) {
+            isUnderlined = !isUnderlined;
+            Spannable spannable = new SpannableString(noteDetails.getText());
+            if (isUnderlined) {
+                spannable.setSpan(new UnderlineSpan(), startSelection, endSelection, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+            } else {
+                UnderlineSpan[] underlineSpans = spannable.getSpans(startSelection, endSelection, UnderlineSpan.class);
+                for (UnderlineSpan underlineSpan : underlineSpans) {
+                    spannable.removeSpan(underlineSpan);
+                }
+            }
+            noteDetails.setText(spannable);
+            // Restore the selection
+            noteDetails.setSelection(startSelection, endSelection);
+        }
+    }
+
+
     private void checkBundle(){
         Bundle bundle = getIntent().getExtras();
         if(bundle != null){
@@ -178,7 +280,23 @@ public class AddNote extends AppCompatActivity {
                 }
             }
         });
+        // Set click listeners for menu items to toggle styles
+        toolbar2.setOnMenuItemClickListener(item -> {
+            int itemId = item.getItemId();
+            switch (itemId) {
+                case R.id.bold:
+                    toggleBoldStyle();
+                    break;
+                case R.id.italic:
+                    toggleItalicStyle();
+                    break;
+                case R.id.underline:
+                    toggleUnderlineStyle();
+                    break;
+            }
+            return true;
+        });
     }
-
 }
+
 

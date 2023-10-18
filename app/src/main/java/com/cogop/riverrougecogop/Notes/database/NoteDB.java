@@ -14,7 +14,7 @@ import androidx.sqlite.db.SupportSQLiteOpenHelper;
 
 import com.cogop.riverrougecogop.Notes.Note;
 
-@Database(entities = {Note.class}, version = 1)
+@Database(entities = {Note.class}, version = 2)
 public abstract class NoteDB extends RoomDatabase {
 
     private static NoteDB instance;

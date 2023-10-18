@@ -6,6 +6,33 @@ import androidx.room.PrimaryKey;
 
 @Entity(tableName = "note")
 public class Note {
+    private boolean isBold;
+    private boolean isItalic;
+    private boolean isUnderlined;
+    public boolean isBold() {
+        return isBold;
+    }
+
+    public void setBold(boolean bold) {
+        isBold = bold;
+    }
+
+    public boolean isItalic() {
+        return isItalic;
+    }
+
+    public void setItalic(boolean italic) {
+        isItalic = italic;
+    }
+
+    public boolean isUnderlined() {
+        return isUnderlined;
+    }
+
+    public void setUnderlined(boolean underlined) {
+        isUnderlined = underlined;
+    }
+
     @PrimaryKey(autoGenerate = true)
     private int id;
 
