@@ -40,7 +40,37 @@ public class AddNote extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_note);
+// TOOLBAR 2 -------------------------------------------------
+        // Reference to the toolbar2
+        Toolbar toolbar2 = findViewById(R.id.toolbar2);
 
+        // Set toolbar2 as the action bar
+        setSupportActionBar(toolbar2);
+
+        // Remove the title from toolbar2
+        getSupportActionBar().setTitle(null);  // or use null
+
+        // Inflate the menu
+        toolbar2.inflateMenu(R.menu.menu_toolbar2);
+
+        // Handle menu item click events
+        toolbar2.setOnMenuItemClickListener(item -> {
+            int itemId = item.getItemId();
+            // Handle item clicks here
+            switch (itemId) {
+                case R.id.bold:
+                    // Handle item 1 click
+                    break;
+                case R.id.italic:
+                    // Handle item 2 click
+                    break;
+                case R.id.underline:
+                    // Handle item 2 click
+                    break;
+            }
+            return true;
+        });
+// End ToolBar 2 -----------------------------------------------
         isUpdate = false;
         Toolbar actionBar = findViewById(R.id.toolbar);
         setSupportActionBar(actionBar);

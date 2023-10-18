@@ -8,6 +8,7 @@
     android:theme="@style/Theme.RiverRougeCOGOP.NoActionBar"
     tools:context=".Notes.AddNote">
 
+<!--Main Toolbar-->
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
@@ -20,6 +21,7 @@
         app:layout_constraintTop_toTopOf="parent" >
 
         <TextView
+            android:id="@+id/toolbarTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -28,6 +30,16 @@
             android:textColor="@color/lime"
             />
     </androidx.appcompat.widget.Toolbar>
+    <!--Edit Toolbar-->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        android:background="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        />
+
 
     <EditText
         android:id="@+id/noteTitle"
@@ -43,10 +55,10 @@
         android:fontFamily="fantasy"
         android:textColorHint="@color/lime"
         android:textColor="@color/lime"
-        android:background="@drawable/square_outline"
+        android:background="@drawable/title_line"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar2" />
 
     <EditText
         android:id="@+id/noteDetails"
