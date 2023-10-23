@@ -49,6 +49,8 @@
     <string name="checks"><b>Checks:</b> Church of God of Prophecy\n<b>Mail To:</b> 41 Orchard St. River Rouge, MI 48218</string>
     <string name="other_ways_to_send"><u>Other ways to send</u></string>
     <string name="app_version">App Version 5.0</string>
+    <string name="cogop_admin">COGOP Admin</string>
+    <string name="admin_notice">This menu is for debugging purposes, if you require access to this section please contact Brett Hudson; Tech Team Leadership</string>
 
 
 </resources>

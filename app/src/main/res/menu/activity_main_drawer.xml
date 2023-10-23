@@ -48,10 +48,12 @@
     <!-- App version at the bottom -->
     <item
         android:id="@+id/app_version"
+        android:title="@string/app_version"
+        app:showAsAction="never"
         android:checkable="false"
-        android:enabled="false"
+        android:enabled="true"
+        android:onClick="passwordcheck"
         android:orderInCategory="100"
-        android:onClick="adminmenu"
-        android:title="@string/app_version" />
+         />
 
 </menu>

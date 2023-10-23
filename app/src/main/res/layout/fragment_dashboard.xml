@@ -64,7 +64,7 @@
                     android:layout_marginRight="20dp"
                     android:scaleX="1.5"
                     android:scaleY="1.5"
-                    android:onClick="settings"
+                    android:onClick="homebtn"
                     android:text="@string/settings" />
             </RelativeLayout>
     <!-- Header -->

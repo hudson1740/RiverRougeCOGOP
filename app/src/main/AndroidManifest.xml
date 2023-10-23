@@ -36,6 +36,8 @@
         </intent-filter>
         </activity>
 
+        <!-- Admin Password Check -->
+        <activity android:name=".AdminMenu.AdminPasswordCheck"/>
         <!-- Admin Menu -->
         <activity android:name="com.cogop.riverrougecogop.AdminMenu.AdminMenu" />
 

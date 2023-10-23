@@ -5,6 +5,7 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import com.cogop.riverrougecogop.AdminMenu.AdminMenu;
+import com.cogop.riverrougecogop.AdminMenu.AdminPasswordCheck;
 import com.cogop.riverrougecogop.Announcements.Announcements;
 import com.cogop.riverrougecogop.Settings.SettingsFragment;
 import static android.content.ContentValues.TAG;
@@ -89,10 +90,10 @@ public class MainActivity extends AppCompatActivity {
             return false;
         }
     }
-
-    public void adminmenu(MenuItem item) {
-        Intent adminmenuIntent = new Intent(this, AdminMenu.class);
-        startActivity(adminmenuIntent);
+    public void passwordcheck(MenuItem item) {
+        // Open the PIN entry screen
+        Intent pinEntryIntent = new Intent(this, AdminPasswordCheck.class);
+        startActivity(pinEntryIntent);
     }
     // OnCreate --------------------------------------------------//
     @SuppressLint("SetJavaScriptEnabled")
