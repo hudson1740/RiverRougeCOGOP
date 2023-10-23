@@ -3,6 +3,8 @@ package com.cogop.riverrougecogop;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+
+import com.cogop.riverrougecogop.AdminMenu.AdminMenu;
 import com.cogop.riverrougecogop.Announcements.Announcements;
 import com.cogop.riverrougecogop.Settings.SettingsFragment;
 import static android.content.ContentValues.TAG;
@@ -25,6 +27,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.window.SplashScreen;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -87,6 +90,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public void adminmenu(MenuItem item) {
+        Intent adminmenuIntent = new Intent(this, AdminMenu.class);
+        startActivity(adminmenuIntent);
+    }
     // OnCreate --------------------------------------------------//
     @SuppressLint("SetJavaScriptEnabled")
     @Override
@@ -94,6 +101,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setTheme(R.style.LightTheme);
         this.supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
+
 
         // ---------- Asks user permission for notification permissions for push notification use -------- //
         int permissionState = ContextCompat.checkSelfPermission(this, android.Manifest.permission.POST_NOTIFICATIONS);
@@ -291,12 +299,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void notesbtn(View view) {
        // Toast.makeText(MainActivity.this, "This option is under development, please look for upcoming updates", Toast.LENGTH_LONG).show();
-
         Intent notesintent = new Intent(MainActivity.this, NotesMainActivity.class);
         startActivity(notesintent);
     }
-
-
     public void settings(View view) {
         Intent settingsintent = new Intent(view.getContext(), SettingsActivity.class);
         startActivityForResult(settingsintent, 0);

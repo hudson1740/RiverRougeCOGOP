@@ -1,26 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single" android:id="@+id/hamMenu">
-       <!-- <item
-            android:id="@+id/Chat"
-            android:icon="@drawable/ic_chat"
-            android:title="@string/chat" />
-
-&lt;!&ndash;GALLERY&ndash;&gt;
-        <item
-            android:id="@+id/Youtube_Downloader"
-            android:icon="@drawable/ic_youtube"
-            android:title="Youtube Downloader" />
-
-        &lt;!&ndash;BIBLE&ndash;&gt;
-        <item
-            android:icon="@drawable/ic_baseline_menu_book_24"
-            android:title="COGOP Bible" />
--->
-<!--SLIDESHOW-->
         <item
             android:id="@+id/announcebtn"
             android:icon="@drawable/ic_baseline_announcement_24"
@@ -31,5 +14,44 @@
             android:icon="@drawable/ic_money"
             android:title="Give (offering, donations etc.)"
             android:onClick="giveButton"/>
+        <item
+            android:id="@+id/NotesButton"
+            android:icon="@drawable/ic_baseline_edit_note_24"
+            android:title="Take Notes"
+            />
+
     </group>
+
+    <!-- Custom layout for separator -->
+    <item
+        android:id="@+id/separator_item"
+        android:layout="@layout/separator_layout"
+        android:checkable="false"
+        android:enabled="false"
+        android:title=""
+        android:orderInCategory="99"/>
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/chat_upload"
+            android:icon="@drawable/ic_chat"
+            android:title="Chat/Upload" />
+    </group>
+
+    <!-- Spacer item to push the App Version to the bottom -->
+    <item
+        android:id="@+id/spacer"
+        android:icon="@android:color/transparent"
+        android:title=""
+        app:showAsAction="always"/>
+
+    <!-- App version at the bottom -->
+    <item
+        android:id="@+id/app_version"
+        android:checkable="false"
+        android:enabled="false"
+        android:orderInCategory="100"
+        android:onClick="adminmenu"
+        android:title="@string/app_version" />
+
 </menu>

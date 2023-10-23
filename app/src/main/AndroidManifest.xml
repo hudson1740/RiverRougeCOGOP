@@ -28,6 +28,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.RiverRougeCOGOP">
+        <activity android:name=".SplashScreen.SplashActivity"
+            android:exported="true">
+            <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
+
+        <!-- Admin Menu -->
+        <activity android:name="com.cogop.riverrougecogop.AdminMenu.AdminMenu" />
+
+        <!-- Main Drawer -->
+        <activity android:name="com.cogop.riverrougecogop.Menus.MainDrawer" />
+
         <!-- Settings -->
         <activity
             android:name=".Settings.SettingsActivity"
@@ -107,6 +121,7 @@
         <package android:name="com.sirma.mobile.bible.android" />
         <package android:name="com.android.chrome" />
         <package android:name="us.zoom.videomeetings" />
+
     </queries>
 </manifest>
 

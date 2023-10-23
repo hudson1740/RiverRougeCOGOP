@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/black">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Church of God of Prophecy"
+        android:textColor="#E80109"
+        android:textSize="40dp"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:layout_above="@id/logoSplash"
+        />
+
+    <ImageView
+        android:id="@+id/logoSplash"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="25dp"
+        android:contentDescription="RiverRougeCOGOP"
+        android:src="@drawable/logo" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/logoSplash"
+        android:text="Developed by COGOP Tech Team 2023"
+        android:textSize="15dp"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/gray"
+        android:gravity="top|center"
+        />
+
+</RelativeLayout>

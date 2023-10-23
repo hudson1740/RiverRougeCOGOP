@@ -4,6 +4,7 @@
     <style name="Theme.RiverRougeCOGOP" parent="Theme.MaterialComponents.DayNight">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+        
         <!-- Primary brand color. -->
         <item name="android:windowNoTitle">true</item>
         <item name="colorPrimary">@color/black</item>
@@ -39,6 +40,7 @@
         <!-- Set the background color to the dark theme color -->
         <item name="android:background">@android:color/background_dark</item>
     </style>
+
 
 
 </resources>
