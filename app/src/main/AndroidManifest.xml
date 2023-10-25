@@ -10,8 +10,6 @@
     <uses-permission android:name="com.google.android.gms.permission.AD_ID" tools:node="remove"/>
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
-
-
     <!-- Firebase -->
     <meta-data
         android:name="com.google.firebase.messaging.default_notification_icon"
@@ -25,16 +23,16 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="RiverRougeCOGOP"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.RiverRougeCOGOP">
         <activity android:name=".SplashScreen.SplashActivity"
             android:exported="true">
+
             <intent-filter>
             <action android:name="android.intent.action.MAIN" />
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
-        </activity>
+    </activity>
 
         <!-- Admin Password Check -->
         <activity android:name=".AdminMenu.AdminPasswordCheck"/>
@@ -46,10 +44,9 @@
 
         <!-- Settings -->
         <activity
-            android:name=".Settings.SettingsActivity"
+            android:name=".Settings.Settings"
             android:exported="true"
-            android:label="@string/title_activity_settings"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
+            android:label="@string/title_activity_settings" />
 
         <!--firebase messaging -->
         <service
@@ -58,8 +55,8 @@
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
-
         </service>
+
         <activity android:name=".Notes.Edit" />
         <!-- Details -->
         <activity
@@ -72,13 +69,16 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Notes.NotesMainActivity" />
         </activity>
+
         <!-- Video Player -->
         <activity android:name=".VideoPlayActivity" />
+
         <!-- navigate -->
         <activity
             android:name=".NavagationActivity"
             android:label="@string/title_activity_navagation"
             android:theme="@style/Theme.RiverRougeCOGOP.NoActionBar" />
+
         <!-- Announcements -->
         <activity
             android:name=".Announcements.Announcements"
@@ -109,12 +109,6 @@
             android:exported="true"
             android:enabled="true"
             android:configChanges="orientation|screenSize|fontScale|screenLayout|smallestScreenSize">
-
-
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 
@@ -123,6 +117,8 @@
         <package android:name="com.sirma.mobile.bible.android" />
         <package android:name="com.android.chrome" />
         <package android:name="us.zoom.videomeetings" />
+        <package android:name="com.google.android.apps.maps" />
+        <package android:name="com.squareup.cash" />
 
     </queries>
 </manifest>

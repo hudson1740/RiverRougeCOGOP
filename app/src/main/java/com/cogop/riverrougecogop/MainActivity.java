@@ -2,18 +2,16 @@ package com.cogop.riverrougecogop;
 
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-import androidx.fragment.app.Fragment;
 
 import com.cogop.riverrougecogop.AdminMenu.AdminMenu;
 import com.cogop.riverrougecogop.AdminMenu.AdminPasswordCheck;
 import com.cogop.riverrougecogop.Announcements.Announcements;
-import com.cogop.riverrougecogop.Settings.SettingsFragment;
+
 import static android.content.ContentValues.TAG;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -23,12 +21,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.webkit.WebView;
-import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.window.SplashScreen;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -45,12 +42,11 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.cogop.riverrougecogop.Bible.BibleVersesProvider;
 import com.cogop.riverrougecogop.Notes.NotesMainActivity;
-import com.cogop.riverrougecogop.Settings.SettingsActivity;
-import com.cogop.riverrougecogop.Settings.SettingsFragment;
+import com.cogop.riverrougecogop.Settings.Settings;
 import com.cogop.riverrougecogop.adapter.MyCustomAdapter;
 import com.cogop.riverrougecogop.model.VideoDetails;
-import com.cogop.riverrougecogop.ui.dashboard.DashboardFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.messaging.FirebaseMessaging;
 
 import org.json.JSONArray;
@@ -58,11 +54,12 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Set;
 
 public class MainActivity extends AppCompatActivity {
     private boolean backPressedToExit = false;
 
-    // Identifires ------------------------------------------------//
+    // Identifiers ------------------------------------------------//
     DrawerLayout drawerLayout;
     WebView web;
     ListView listView;
@@ -71,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
     String url = "https://www.google.com";
     private TextView textView44;
     ImageView backButton;
+    private View bottomBanner;
 
 
     private TextView textViewVerse;
@@ -102,7 +100,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setTheme(R.style.LightTheme);
         this.supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
-
+        FirebaseApp.initializeApp(this);
+        bottomBanner = findViewById(R.id.bottomBanner);
 
         // ---------- Asks user permission for notification permissions for push notification use -------- //
         int permissionState = ContextCompat.checkSelfPermission(this, android.Manifest.permission.POST_NOTIFICATIONS);
@@ -165,7 +164,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
     //navigation menu items make sure it is MenuItem item note View view !!!!!
     public void giveButton(MenuItem item) {
         // Your action when the "Give (offering, donations etc.)" item is clicked
@@ -177,7 +175,6 @@ public class MainActivity extends AppCompatActivity {
         Intent announcementsIntent = new Intent(this, Announcements.class);
         startActivity(announcementsIntent);
     }
-
 
     @Override
     protected void onPause() {
@@ -304,8 +301,8 @@ public class MainActivity extends AppCompatActivity {
         startActivity(notesintent);
     }
     public void settings(View view) {
-        Intent settingsintent = new Intent(view.getContext(), SettingsActivity.class);
-        startActivityForResult(settingsintent, 0);
+        Intent settingsintent = new Intent(this, Settings.class);
+        startActivity(settingsintent);
     }
 
     public void giving(View view) {
@@ -392,7 +389,6 @@ public class MainActivity extends AppCompatActivity {
             super.onBackPressed();
         }
     }
-
 
     @Override
     protected void onUserLeaveHint() {

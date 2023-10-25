@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/black"
+        android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <!-- Menu   -->
+        <ImageButton
+            android:id="@+id/backButton"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@color/black"
+            android:onClick="backButton"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:src="@drawable/ic_back" />
+
+        <TextView
+            android:id="@+id/bishopText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="22dp"
+            android:layout_toRightOf="@id/backButton"
+            android:layout_toLeftOf="@id/settingsButton"
+            android:gravity="center"
+            android:text="Settings"
+            android:textSize="@dimen/_13sdp"
+            android:textColor="@color/white"
+            android:textStyle="italic|bold" />
+
+        <ImageButton
+            android:id="@+id/settingsButton"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/baseline_settings_24_red"
+            android:layout_marginTop="@dimen/_2sdp"
+            android:background="@color/black"
+            android:layout_marginRight="20dp"
+            android:visibility="invisible"
+            android:scaleX="1.5"
+            android:scaleY="1.5"
+            android:onClick="settings"
+            android:text="@string/settings" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/togglesLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginTop="16dp">
+
+        <!-- Disable Notifications Toggle -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/title_line"
+            android:gravity="center_vertical"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Disable Notifications"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="9dp"
+                android:layout_toRightOf="@id/toggleNotifications"
+                android:textStyle="bold"
+                android:textColor="@color/red"
+                android:textSize="@dimen/_14sdp" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/toggleNotifications"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:thumbTint="@color/red"
+                android:trackTint="@color/black"
+                android:checked="false"
+                android:enabled="false"
+                android:onClick="onToggleNotifications" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+        <!-- Disable Scriptures Toggle -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/title_line"
+            android:padding="10dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="9dp"
+                android:layout_toRightOf="@id/toggleScriptures"
+                android:text="Disable Scriptures"
+                android:textColor="@color/red"
+                android:textSize="@dimen/_14sdp"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/toggleScriptures"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:thumbTint="@color/red"
+                android:trackTint="@color/black"
+                android:checked="false"
+                android:enabled="false"
+                android:onClick="onToggleScriptures" />
+        </RelativeLayout>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
