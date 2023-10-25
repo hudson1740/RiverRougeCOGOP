@@ -18,6 +18,7 @@
             android:id="@+id/NotesButton"
             android:icon="@drawable/ic_baseline_edit_note_24"
             android:title="Take Notes"
+            android:onClick="notesbtn"
             />
 
     </group>

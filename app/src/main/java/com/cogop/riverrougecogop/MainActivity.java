@@ -170,7 +170,10 @@ public class MainActivity extends AppCompatActivity {
         Intent giveintent  = new Intent(this, Giving.class);
         startActivity(giveintent);
     }
-
+    public void notesbtn(MenuItem item) {
+        Intent giveintent  = new Intent(this, NotesMainActivity.class);
+        startActivity(giveintent);
+    }
     public void announcebtn(MenuItem item) {
         Intent announcementsIntent = new Intent(this, Announcements.class);
         startActivity(announcementsIntent);
