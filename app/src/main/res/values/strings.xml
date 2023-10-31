@@ -51,6 +51,7 @@
     <string name="app_version">App Version 5.0</string>
     <string name="cogop_admin">COGOP Admin</string>
     <string name="admin_notice">This menu is for debugging purposes, if you require access to this section please contact Brett Hudson; Tech Team Leadership</string>
+    <string name="username">User123</string>
 
 
 </resources>

@@ -3,7 +3,6 @@ package com.cogop.riverrougecogop;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
-import com.cogop.riverrougecogop.AdminMenu.AdminMenu;
 import com.cogop.riverrougecogop.AdminMenu.AdminPasswordCheck;
 import com.cogop.riverrougecogop.Announcements.Announcements;
 
@@ -22,7 +21,6 @@ import android.view.View;
 import android.view.Window;
 import android.webkit.WebView;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -41,6 +39,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.cogop.riverrougecogop.Bible.BibleVersesProvider;
+import com.cogop.riverrougecogop.Chat.ChatActivity;
+import com.cogop.riverrougecogop.Chat.NameSelectionActivity;
 import com.cogop.riverrougecogop.Notes.NotesMainActivity;
 import com.cogop.riverrougecogop.Settings.Settings;
 import com.cogop.riverrougecogop.adapter.MyCustomAdapter;
@@ -54,7 +54,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Set;
 
 public class MainActivity extends AppCompatActivity {
     private boolean backPressedToExit = false;
@@ -234,6 +233,11 @@ public class MainActivity extends AppCompatActivity {
         Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://bit.ly/RRCOGOP"));
         startActivity(browserIntent);
     }
+    public void chatButton(MenuItem item) {
+        Intent chatButton  = new Intent(this, NameSelectionActivity.class);
+        startActivity(chatButton);
+    }
+
 
     public void youtubeclick(View view) {
         Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/@riverrougecogop5011/featured"));

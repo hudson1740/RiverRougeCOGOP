@@ -73,6 +73,10 @@
         <!-- Video Player -->
         <activity android:name=".VideoPlayActivity" />
 
+        <!-- Chat -->
+        <activity android:name=".Chat.ChatActivity"></activity>
+        <activity android:name=".Chat.NameSelectionActivity"></activity>
+
         <!-- navigate -->
         <activity
             android:name=".NavagationActivity"

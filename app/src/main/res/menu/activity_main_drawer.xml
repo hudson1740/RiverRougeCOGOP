@@ -36,7 +36,8 @@
         <item
             android:id="@+id/chat_upload"
             android:icon="@drawable/ic_chat"
-            android:title="Chat/Upload" />
+            android:title="Chat/Upload"
+            android:onClick="chatButton"/>
     </group>
 
     <!-- Spacer item to push the App Version to the bottom -->
