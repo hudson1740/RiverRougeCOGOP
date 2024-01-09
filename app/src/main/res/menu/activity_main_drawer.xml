@@ -36,6 +36,7 @@
         <item
             android:id="@+id/chat_upload"
             android:icon="@drawable/ic_chat"
+            android:enabled="false"
             android:title="Chat/Upload"
             android:onClick="chatButton"/>
     </group>

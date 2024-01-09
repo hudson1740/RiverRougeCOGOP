@@ -4,13 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/black"
+    android:background="@drawable/multiblack"
     android:id="@+id/settingslayout">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/black"
+        android:background="@drawable/multiblack"
         app:layout_constraintTop_toTopOf="@id/settingslayout"
         app:layout_constraintBottom_toBottomOf="@null"
 
@@ -23,7 +23,7 @@
             android:id="@+id/backButton"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:background="@color/black"
+            android:background="@android:color/transparent"
             android:onClick="backButton"
             android:layout_marginStart="@dimen/_10sdp"
             android:src="@drawable/ic_back" />
@@ -48,7 +48,7 @@
             android:layout_alignParentEnd="true"
             android:src="@drawable/baseline_settings_24_red"
             android:layout_marginTop="@dimen/_2sdp"
-            android:background="@color/black"
+            android:background="@drawable/multiblack"
             android:layout_marginRight="20dp"
             android:visibility="invisible"
             android:scaleX="1.5"
@@ -69,7 +69,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/title_line"
+            android:background="@android:color/transparent"
             android:gravity="center_vertical"
             android:padding="10dp">
 
@@ -101,7 +101,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/title_line"
+            android:background="@android:color/transparent"
             android:padding="10dp"
             android:layout_marginTop="10dp"
             android:gravity="center_vertical">
