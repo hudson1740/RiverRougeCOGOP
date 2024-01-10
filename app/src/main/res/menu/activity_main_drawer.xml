@@ -39,6 +39,12 @@
             android:enabled="false"
             android:title="Chat/Upload"
             android:onClick="chatButton"/>
+
+        <item
+            android:id="@+id/youtube_videos"
+            android:icon="@drawable/ic_video"
+            android:enabled="false"
+            android:title="Youtube Videos" />
     </group>
 
     <!-- Spacer item to push the App Version to the bottom -->

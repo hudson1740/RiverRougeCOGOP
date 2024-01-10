@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
+    android:background="@drawable/multiblack"
     >
     <Toolbar
         android:id="@+id/announcementsToolbar"
@@ -18,7 +18,7 @@
         android:onClick="backButton1"
         android:layout_marginStart="@dimen/_5sdp"
         android:padding="@dimen/_10sdp"
-        android:background="@color/black"
+        android:background="@android:color/transparent"
         android:src="@drawable/ic_back"
         android:focusable="true" />
     <TextView
