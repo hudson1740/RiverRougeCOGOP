@@ -240,7 +240,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void youtubeclick(View view) {
-        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/@riverrougecogop5011/featured"));
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/@RiverRougeCOGOP/streams"));
         startActivity(browserIntent);
     }
 
