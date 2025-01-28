@@ -53,5 +53,9 @@
     <string name="admin_notice">This menu is for debugging purposes, if you require access to this section please contact Brett Hudson; Tech Team Leadership</string>
     <string name="username">User123</string>
 
+    <string-array name="verses">
+        <item>John 3:16|[16] For God so loved the world that he gave his only begotten son, that whoever shall believe in him shall not perish but have eternal life.</item>
+        <item>John 3:16|[16] For God so loved the world that he gave his only begotten son, that whoever shall believe in him shall not perish but have eternal life.</item>
+    </string-array>
 
 </resources>

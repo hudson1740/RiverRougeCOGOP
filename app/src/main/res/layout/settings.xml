@@ -11,121 +11,127 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/multiblack"
-        app:layout_constraintTop_toTopOf="@id/settingslayout"
-        app:layout_constraintBottom_toBottomOf="@null"
+        app:layout_constraintTop_toTopOf="parent"
+        android:orientation="vertical">
 
-    android:orientation="vertical">
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <!-- Menu   -->
-        <ImageButton
-            android:id="@+id/backButton"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:background="@android:color/transparent"
-            android:onClick="backButton"
-            android:layout_marginStart="@dimen/_10sdp"
-            android:src="@drawable/ic_back" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageButton
+                android:id="@+id/backButton"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@android:color/transparent"
+                android:onClick="backButton"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:src="@drawable/ic_back"  />
+
+            <TextView
+                android:id="@+id/bishopText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="22dp"
+                android:layout_toRightOf="@id/backButton"
+                android:layout_toLeftOf="@id/settingsButton"
+                android:gravity="center"
+                android:text="Settings"
+                android:textSize="@dimen/_13sdp"
+                android:textColor="@color/white"
+                android:textStyle="italic|bold" />
+
+            <ImageButton
+                android:id="@+id/settingsButton"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_35sdp"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/baseline_settings_24_red"
+                android:layout_marginTop="@dimen/_2sdp"
+                android:background="@drawable/multiblack"
+                android:layout_marginRight="20dp"
+                android:visibility="invisible"
+                android:scaleX="1.5"
+                android:scaleY="1.5"
+                android:onClick="settings"
+                android:text="@string/settings" />
+        </RelativeLayout>
 
         <TextView
-            android:id="@+id/bishopText"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="22dp"
-            android:layout_toRightOf="@id/backButton"
-            android:layout_toLeftOf="@id/settingsButton"
-            android:gravity="center"
-            android:text="Settings"
-            android:textSize="@dimen/_13sdp"
+            android:text="Widget Settings"
+            android:textSize="18sp"
+            android:textStyle="bold"
             android:textColor="@color/white"
-            android:textStyle="italic|bold" />
-
-        <ImageButton
-            android:id="@+id/settingsButton"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/_35sdp"
-            android:layout_alignParentEnd="true"
-            android:src="@drawable/baseline_settings_24_red"
-            android:layout_marginTop="@dimen/_2sdp"
-            android:background="@drawable/multiblack"
-            android:layout_marginRight="20dp"
-            android:visibility="invisible"
-            android:scaleX="1.5"
-            android:scaleY="1.5"
-            android:onClick="settings"
-            android:text="@string/settings" />
-    </RelativeLayout>
-
-    <LinearLayout
-        android:id="@+id/togglesLayout"
+            android:gravity="center"
+            android:padding="8dp"
+            android:layout_marginTop="16dp" />  <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:gravity="center"
-        android:layout_marginTop="16dp">
+        android:padding="16dp">
 
-        <!-- Disable Notifications Toggle -->
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
-            android:gravity="center_vertical"
-            android:padding="10dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Disable Notifications"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="9dp"
-                android:layout_toRightOf="@id/toggleNotifications"
-                android:textStyle="bold"
-                android:textColor="@color/red"
-                android:textSize="@dimen/_14sdp" />
-
-            <androidx.appcompat.widget.SwitchCompat
-                android:id="@+id/toggleNotifications"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:thumbTint="@color/red"
-                android:trackTint="@color/black"
-                android:checked="false"
-                android:enabled="false"
-                android:onClick="onToggleNotifications" />
-
-        </RelativeLayout>
-    </LinearLayout>
-
-        <!-- Disable Scriptures Toggle -->
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
-            android:padding="10dp"
-            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
             android:gravity="center_vertical">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="9dp"
-                android:layout_toRightOf="@id/toggleScriptures"
-                android:text="Disable Scriptures"
-                android:textColor="@color/red"
-                android:textSize="@dimen/_14sdp"
+                android:layout_weight="1"
+                android:text="Verse Color:"
+                android:textColor="@color/white"
                 android:textStyle="bold" />
 
-            <androidx.appcompat.widget.SwitchCompat
-                android:id="@+id/toggleScriptures"
+            <TextView
+                android:id="@+id/verseColorDisplay"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@color/black" />
+
+            <Button
+                android:id="@+id/chooseVerseColorButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:thumbTint="@color/red"
-                android:trackTint="@color/black"
-                android:checked="false"
-                android:enabled="false"
-                android:onClick="onToggleScriptures" />
-        </RelativeLayout>
+                android:text="Choose" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="8dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Background Color:"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/backgroundColorDisplay"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@color/white" />
+
+            <Button
+                android:id="@+id/chooseBackgroundColorButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Choose" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/saveButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="Save" />
+    </LinearLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

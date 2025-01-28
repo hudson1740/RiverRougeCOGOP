@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="8dp"
+    android:background="@drawable/widget_background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/verse_of_day_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Verse of the Day"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:layout_gravity="start|center_vertical"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:id="@+id/verse_reference"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/divider_color"
+            android:textSize="14sp"
+            android:layout_gravity="end|center_vertical"
+            android:layout_weight="0"/>
+
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/verse_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textStyle="italic"
+        android:textColor="@color/colorPrimary"
+        android:gravity="center"
+        android:padding="6dp" />
+    <ImageView
+        android:id="@+id/company_logo"
+        android:layout_width="48dp"  android:layout_height="48dp"  android:layout_gravity="end|bottom"  android:layout_marginTop="4dp"  android:layout_marginEnd="4dp"
+        android:src="@drawable/logo"
+        android:contentDescription="Company Logo" />
+</LinearLayout>

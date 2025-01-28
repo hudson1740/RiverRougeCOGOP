@@ -30,7 +30,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/logoSplash"
-        android:text="Developed by COGOP Tech Team 2024"
+        android:text="Developed by COGOP Tech Team 2025"
         android:textSize="15dp"
         android:layout_marginTop="20dp"
         android:textColor="@color/gray"

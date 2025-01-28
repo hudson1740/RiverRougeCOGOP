@@ -18,13 +18,22 @@
         android:name="com.google.firebase.messaging.default_notification_color"
         android:resource="@color/colorAccent" />
 
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="RiverRougeCOGOP"
         android:supportsRtl="true"
         android:theme="@style/Theme.RiverRougeCOGOP">
+        <receiver android:name=".VerseWidgetProvider"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/verse_widget_info" />
+        </receiver>
         <activity android:name=".SplashScreen.SplashActivity"
             android:exported="true">
 
@@ -123,7 +132,7 @@
         <package android:name="us.zoom.videomeetings" />
         <package android:name="com.google.android.apps.maps" />
         <package android:name="com.squareup.cash" />
-
     </queries>
+
 </manifest>
 
