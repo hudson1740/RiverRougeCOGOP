@@ -29,6 +29,7 @@
                 android:textStyle="bold"
                 android:textColor="#FFFFFF"
                 android:gravity="center"
+                android:paddingTop="10dp"
                 android:paddingBottom="8dp"
                 android:elevation="4dp"/>
 

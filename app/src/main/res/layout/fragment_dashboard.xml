@@ -143,17 +143,21 @@
                 android:elevation="12dp"
                 android:focusable="true"
                 android:foreground="?android:attr/selectableItemBackground"
-                app:cardCornerRadius="8dp">
+                app:cardCornerRadius="15dp"
+                app:cardPreventCornerOverlap="false"
+                app:cardUseCompatPadding="true"
+                >
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/shadowcolor">
+                    android:background="@drawable/black_background">
 
                     <ImageView
                         android:id="@+id/image_view1"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
+                        android:paddingTop="20dp"
                         android:onClick="join1"
                         android:src="@drawable/ic_baseline_login_24"
                         app:layout_constraintBottom_toTopOf="@+id/textView1"
@@ -170,7 +174,7 @@
                         android:onClick="join1"
                         android:text="@string/join_service"
                         android:textAllCaps="true"
-                        android:textColor="@color/lime"
+                        android:textColor="@color/white"
                         android:textSize="14sp"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -193,7 +197,10 @@
                 android:elevation="12dp"
                 android:focusable="true"
                 android:foreground="?android:attr/selectableItemBackground"
-                app:cardCornerRadius="8dp">
+                app:cardCornerRadius="15dp"
+                app:cardPreventCornerOverlap="false"
+                app:cardUseCompatPadding="true"
+                >
 
                 <!-- Notification Bubble that wont show -->
                 <RelativeLayout
@@ -226,12 +233,13 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/shadowcolor">
+                    android:background="@drawable/black_background">
 
                     <ImageView
                         android:id="@+id/image_view2"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
+                        android:paddingTop="20dp"
                         android:onClick="announcementsbtn"
                         android:src="@drawable/ic_baseline_info_24"
                         app:layout_constraintBottom_toTopOf="@+id/textView2"
@@ -248,8 +256,8 @@
                         android:onClick="announcementsbtn"
                         android:text="@string/announcements"
                         android:textAllCaps="true"
-                        android:textColor="@color/lime"
-                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:textSize="12sp"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -285,17 +293,21 @@
                 android:elevation="12dp"
                 android:focusable="true"
                 android:foreground="?android:attr/selectableItemBackground"
-                app:cardCornerRadius="8dp">
+                app:cardCornerRadius="15dp"
+                app:cardPreventCornerOverlap="false"
+                app:cardUseCompatPadding="true"
+                >
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/shadowcolor">
+                    android:background="@drawable/black_background">
 
                     <ImageView
                         android:id="@+id/image_view3"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
+                        android:paddingTop="20dp"
                         android:onClick="biblebtn"
                         android:src="@drawable/ic_baseline_menu_book_24"
                         app:layout_constraintBottom_toTopOf="@+id/textView3"
@@ -312,8 +324,8 @@
                         android:onClick="biblebtn"
                         android:text="@string/bible"
                         android:textAllCaps="true"
-                        android:textColor="@color/lime"
-                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:textSize="17sp"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -334,17 +346,21 @@
                 android:elevation="12dp"
                 android:focusable="true"
                 android:foreground="?android:attr/selectableItemBackground"
-                app:cardCornerRadius="8dp">
+                app:cardCornerRadius="15dp"
+                app:cardPreventCornerOverlap="false"
+                app:cardUseCompatPadding="true"
+                >
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/shadowcolor">
+                    android:background="@drawable/black_background">
 
                     <ImageView
                         android:id="@+id/image_view4"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
+                        android:paddingTop="20dp"
                         android:onClick="locationbtn"
                         android:src="@drawable/ic_baseline_location_on_24"
                         app:layout_constraintBottom_toTopOf="@+id/textView4"
@@ -361,8 +377,8 @@
                         android:onClick="locationbtn"
                         android:text="@string/location"
                         android:textAllCaps="true"
-                        android:textColor="@color/lime"
-                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:textSize="17sp"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -399,17 +415,21 @@
                 android:elevation="12dp"
                 android:focusable="true"
                 android:foreground="?android:attr/selectableItemBackground"
-                app:cardCornerRadius="8dp">
+                app:cardCornerRadius="15dp"
+                app:cardPreventCornerOverlap="false"
+                app:cardUseCompatPadding="true"
+                >
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/shadowcolor">
+                    android:background="@drawable/black_background">
 
                     <ImageView
                         android:id="@+id/image_view5"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
+                        android:paddingTop="20dp"
                         android:onClick="giving"
                         android:src="@drawable/money_24"
                         app:layout_constraintBottom_toTopOf="@+id/textView5"
@@ -426,8 +446,8 @@
                         android:onClick="giving"
                         android:text="Giving"
                         android:textAllCaps="true"
-                        android:textColor="@color/lime"
-                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:textSize="17sp"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -448,17 +468,21 @@
                 android:elevation="12dp"
                 android:focusable="true"
                 android:foreground="?android:attr/selectableItemBackground"
-                app:cardCornerRadius="8dp">
+                app:cardCornerRadius="15dp"
+                app:cardPreventCornerOverlap="false"
+                app:cardUseCompatPadding="true"
+                >
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/shadowcolor">
+                    android:background="@drawable/black_background">
 
                     <ImageView
                         android:id="@+id/image_view6"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
+                        android:paddingTop="20sp"
                         android:onClick="notesbtn"
                         android:src="@drawable/ic_baseline_notes_24"
                         app:layout_constraintBottom_toTopOf="@+id/textView6"
@@ -475,8 +499,8 @@
                         android:onClick="notesbtn"
                         android:text="@string/notes"
                         android:textAllCaps="true"
-                        android:textColor="@color/lime"
-                        android:textSize="14sp"
+                        android:textColor="@color/white"
+                        android:textSize="17sp"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
