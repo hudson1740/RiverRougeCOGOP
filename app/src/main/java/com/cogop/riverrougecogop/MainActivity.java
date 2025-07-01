@@ -185,6 +185,11 @@ public class MainActivity extends AppCompatActivity {
         long currentTimestamp = System.currentTimeMillis();
         getSharedPreferences("MainActivity", Context.MODE_PRIVATE).edit().putLong("timestamp", currentTimestamp).apply();
     }
+    public void meetleaders(MenuItem item) {
+        //Meet Our Leaders Button
+        Intent meetIntent = new Intent(this, Meet.class);
+        startActivity(meetIntent);
+    }
 
     private void displayVideos() {
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());

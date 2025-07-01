@@ -6,20 +6,32 @@
     <group android:checkableBehavior="single" android:id="@+id/hamMenu">
         <item
             android:id="@+id/announcebtn"
+            android:visible="false"
             android:icon="@drawable/ic_baseline_announcement_24"
             android:title="Announcements"
             android:onClick="announcebtn"/>
         <item
             android:id="@+id/giveButton"
+            android:visible="false"
             android:icon="@drawable/ic_money"
             android:title="Give (offering, donations etc.)"
             android:onClick="giveButton"/>
         <item
             android:id="@+id/NotesButton"
+            android:visible="false"
             android:icon="@drawable/ic_baseline_edit_note_24"
             android:title="Take Notes"
             android:onClick="notesbtn"
             />
+
+        <!--Meet Our Leaders-->
+        <item
+            android:id="@+id/meetourleaders"
+            android:icon="@drawable/ic_person"
+            android:title="Meet Our Leaders"
+            android:onClick="meetleaders"
+            />
+
 
     </group>
 

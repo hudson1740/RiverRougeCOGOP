@@ -99,6 +99,13 @@
             android:enabled="true"
             android:exported="true"/>
 
+        <!-- Meet Our Leaders -->
+        <activity
+            android:name=".Meet"
+            android:label="Meet"
+            android:enabled="true"
+            android:exported="true"/>
+
         <!-- Bible -->
         <activity
             android:name=".Bible.Bible"
