@@ -13,8 +13,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.cogop.riverrougecogop.MainActivity;
 import com.cogop.riverrougecogop.R;
 import com.google.firebase.FirebaseApp;
-import com.google.firebase.crashlytics.FirebaseCrashlytics;
-import com.google.firebase.crashlytics.internal.model.CrashlyticsReport;
 
 public class AdminMenu extends AppCompatActivity {
 
@@ -149,9 +147,7 @@ public class AdminMenu extends AppCompatActivity {
     }
 
     private void showLastCrashLog() {
-        FirebaseCrashlytics.getInstance().checkForUnsentReports();
 
-        FirebaseCrashlytics.getInstance().sendUnsentReports();
 
         new AlertDialog.Builder(this)
                 .setTitle("Crash Logs")
