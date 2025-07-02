@@ -9,6 +9,8 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
+    <string name="daily_scripture_heading">Inspirational Scripture</string>
+
     <string name="navmenu">navmenu</string>
     <string name="welcome_to_my_new_video">Welcome to my new video</string>
     <string name="no_new_notifications">No New Notifications!</string>
