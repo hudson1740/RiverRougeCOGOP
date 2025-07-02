@@ -1,94 +1,86 @@
-package com.cogop.riverrougecogop.Settings; // Use your actual package name
+package com.cogop.riverrougecogop.Settings;
 
-import android.appwidget.AppWidgetManager;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.TextView;
+import android.widget.ImageButton;
+import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 
-import com.cogop.riverrougecogop.MainActivity;
 import com.cogop.riverrougecogop.R;
-import com.cogop.riverrougecogop.Settings.ColorPickerDialogFragment; // Import the DialogFragment
 
+public class Settings extends AppCompatActivity {
+    private static final String PREFS_NAME = "AppSettings";
+    private static final String KEY_VERSE_UPDATE_INTERVAL = "verse_update_interval";
+    private static final String KEY_NOTIFICATIONS = "notifications_enabled";
 
-public class Settings extends AppCompatActivity implements ColorPickerDialogFragment.ColorPickerDialogListener {
-
-    private static final String PREFS_NAME = "widget_settings";
-    private static final String KEY_VERSE_COLOR = "verse_color";
-    private static final String KEY_BACKGROUND_COLOR = "background_color";
-
-    private TextView verseColorDisplay;
-    private TextView backgroundColorDisplay;
-    private int selectedVerseColor;
-    private int selectedBackgroundColor;
-    private boolean isVerseColor; // Add this variable
+    private Spinner verseUpdateSpinner;
+    private Switch notificationSwitch;
+    private long selectedInterval;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settings);
 
-        verseColorDisplay = findViewById(R.id.verseColorDisplay);
-        backgroundColorDisplay = findViewById(R.id.backgroundColorDisplay);
+        verseUpdateSpinner = findViewById(R.id.verseUpdateSpinner);
+        notificationSwitch = findViewById(R.id.notificationSwitch);
 
         SharedPreferences prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
-        selectedVerseColor = prefs.getInt(KEY_VERSE_COLOR, ContextCompat.getColor(this, android.R.color.black));
-        selectedBackgroundColor = prefs.getInt(KEY_BACKGROUND_COLOR, ContextCompat.getColor(this, android.R.color.white));
+        selectedInterval = prefs.getLong(KEY_VERSE_UPDATE_INTERVAL, 24 * 60 * 60 * 1000); // Default 24 hours
+        boolean notificationsEnabled = prefs.getBoolean(KEY_NOTIFICATIONS, true);
 
-        updateColorDisplays();
+        verseUpdateSpinner.setSelection(getIntervalPosition(selectedInterval));
+        notificationSwitch.setChecked(notificationsEnabled);
 
-        Button chooseVerseColorButton = findViewById(R.id.chooseVerseColorButton);
-        chooseVerseColorButton.setOnClickListener(v -> showColorPickerDialog(true));
+        verseUpdateSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                long[] intervals = {1 * 60 * 60 * 1000, 12 * 60 * 60 * 1000, 24 * 60 * 60 * 1000};
+                selectedInterval = intervals[position];
+            }
 
-        Button chooseBackgroundColorButton = findViewById(R.id.chooseBackgroundColorButton);
-        chooseBackgroundColorButton.setOnClickListener(v -> showColorPickerDialog(false));
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {}
+        });
 
         Button saveButton = findViewById(R.id.saveButton);
-        saveButton.setOnClickListener(v -> saveColors());
+        saveButton.setOnClickListener(v -> saveSettings());
+
+        ImageButton backButton = findViewById(R.id.backButton);
+        backButton.setOnClickListener(v -> finish());
     }
 
-    private void updateColorDisplays() {
-        verseColorDisplay.setBackgroundColor(selectedVerseColor);
-        backgroundColorDisplay.setBackgroundColor(selectedBackgroundColor);
+    private int getIntervalPosition(long interval) {
+        if (interval == 1 * 60 * 60 * 1000) return 0;
+        if (interval == 12 * 60 * 60 * 1000) return 1;
+        return 2; // Default 24 hours
     }
 
-    private void showColorPickerDialog(final boolean isVerseColor) {
-        this.isVerseColor = isVerseColor; // Set the variable
-        ColorPickerDialogFragment dialog = new ColorPickerDialogFragment();
-        dialog.show(getSupportFragmentManager(), "color_picker");
-    }
-
-    @Override
-    public void onColorSelected(int color) {
-        if (isVerseColor) { // Now you can use it here
-            selectedVerseColor = color;
-        } else {
-            selectedBackgroundColor = color;
-        }
-        updateColorDisplays();
-    }
-
-    private void saveColors() {
+    private void saveSettings() {
         SharedPreferences.Editor editor = getSharedPreferences(PREFS_NAME, MODE_PRIVATE).edit();
-        editor.putInt(KEY_VERSE_COLOR, selectedVerseColor);
-        editor.putInt(KEY_BACKGROUND_COLOR, selectedBackgroundColor);
+        editor.putLong(KEY_VERSE_UPDATE_INTERVAL, selectedInterval);
+        editor.putBoolean(KEY_NOTIFICATIONS, notificationSwitch.isChecked());
         editor.apply();
 
-        Toast.makeText(this, "Widget settings saved!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Settings saved!", Toast.LENGTH_SHORT).show();
 
-        Intent intent = new Intent(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
-        sendBroadcast(intent);
+        Intent intent = new Intent();
+        intent.putExtra("verse_update_interval", selectedInterval);
+        intent.putExtra("notifications_enabled", notificationSwitch.isChecked());
+        setResult(RESULT_OK, intent);
+        finish();
     }
 
     public void backButton(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+        finish();
     }
+
+    public void settings(View view) {}
 }

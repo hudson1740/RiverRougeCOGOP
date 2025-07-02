@@ -22,5 +22,10 @@
 
     <color name="search">#00FFFFFF</color>
 
+    <color name="card_background">#1A1A1A</color> <!-- Dark gray for card backgrounds -->
+    <color name="header_background">#051C43</color> <!-- Using existing blue for headers -->
+    <color name="button_background">#FF0000</color> <!-- Using existing colorAccent for buttons -->
+    <color name="text_secondary">#B0BEC5</color>
+
 
 </resources>

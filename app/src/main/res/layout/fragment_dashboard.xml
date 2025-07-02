@@ -58,12 +58,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/_35sdp"
                     android:layout_alignParentEnd="true"
-                    android:src="@drawable/baseline_settings_24_red"
+                    android:src="@drawable/settings_gear"
                     android:layout_marginTop="@dimen/_2sdp"
                     android:background="@android:color/transparent"
                     android:layout_marginRight="20dp"
-                    android:scaleX="1.5"
-                    android:scaleY="1.5"
+                    android:scaleX="1.0"
+                    android:scaleY="1.0"
                     android:onClick="settings"
                     android:text="@string/settings" />
             </RelativeLayout>
@@ -516,7 +516,7 @@
             android:layout_height="80dp"
             android:visibility="visible"
             android:layout_marginTop="@dimen/_10sdp"
-            android:background="@drawable/blue1"
+            android:background="@drawable/black_background"
             android:orientation="horizontal">
 
             <TextView
