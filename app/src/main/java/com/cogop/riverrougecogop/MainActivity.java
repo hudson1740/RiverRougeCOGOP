@@ -156,7 +156,7 @@ public class MainActivity extends AppCompatActivity {
                 displayRandomVerse();
                 startVerseTimer(12 * 60 * 60 * 1000); // 12 hours in milliseconds
             } else {
-                // Less than 12 hours have passed, resume the timer with the remaining time
+                // Less than 12 hours has passed, resume the timer with the remaining time
                 long remainingTime = 12 * 60 * 60 * 1000 - elapsedTime;
                 startVerseTimer((int) remainingTime);
             }
@@ -186,9 +186,9 @@ public class MainActivity extends AppCompatActivity {
         getSharedPreferences("MainActivity", Context.MODE_PRIVATE).edit().putLong("timestamp", currentTimestamp).apply();
     }
     public void meetleaders(MenuItem item) {
-        //Meet Our Leaders Button
-        Intent meetIntent = new Intent(this, Meet.class);
-        startActivity(meetIntent);
+        // Meet Our Leaders Button: Show as a BottomSheetDialogFragment
+        MeetOurLeadersFragment bottomSheetFragment = new MeetOurLeadersFragment();
+        bottomSheetFragment.show(getSupportFragmentManager(), bottomSheetFragment.getTag());
     }
 
     private void displayVideos() {
@@ -308,7 +308,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void notesbtn(View view) {
-       // Toast.makeText(MainActivity.this, "This option is under development, please look for upcoming updates", Toast.LENGTH_LONG).show();
+        // Toast.makeText(MainActivity.this, "This option is under development, please look for upcoming updates", Toast.LENGTH_LONG).show();
         Intent notesintent = new Intent(MainActivity.this, NotesMainActivity.class);
         startActivity(notesintent);
     }
@@ -409,8 +409,9 @@ public class MainActivity extends AppCompatActivity {
 
         if (navController.getPreviousBackStackEntry() != null) {
             navController.popBackStack(); }
-            else{
+        else{
             finish();
         }
     }
+
 }
