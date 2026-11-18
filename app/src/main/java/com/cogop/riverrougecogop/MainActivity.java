@@ -99,7 +99,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setTheme(R.style.LightTheme);
         this.supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
-        FirebaseApp.initializeApp(this);
+        if (FirebaseApp.getApps(this).isEmpty()) {
+            FirebaseApp.initializeApp(this);
+        }
         bottomBanner = findViewById(R.id.bottomBanner);
 
         // ---------- Asks user permission for notification permissions for push notification use -------- //

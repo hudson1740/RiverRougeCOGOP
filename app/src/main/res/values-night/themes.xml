@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- Base application theme. -->
     <style name="Theme.RiverRougeCOGOP" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
 
@@ -10,8 +10,8 @@
         <item name="colorSecondary">@color/teal_200</item>
         <item name="colorSecondaryVariant">@color/teal_200</item>
         <item name="colorOnSecondary">@color/black</item>
-        <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- Edge-to-edge: omit statusBarColor / navigationBarColor (deprecated on API 35+). -->
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <!-- Customize your theme here. -->
         <item name="windowNoTitle">true</item>
     </style>

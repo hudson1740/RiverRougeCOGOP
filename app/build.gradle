@@ -36,6 +36,7 @@ android {
         }
     }
     compileOptions {
+        coreLibraryDesugaringEnabled true
         sourceCompatibility JavaVersion.VERSION_11
         targetCompatibility JavaVersion.VERSION_11
     }
@@ -56,9 +57,15 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.9.1'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.9.1'
     implementation 'androidx.preference:preference:1.2.1'
+    implementation "androidx.core:core:1.17.0"
     implementation "androidx.core:core-splashscreen:1.0.1"
+    implementation "androidx.activity:activity:1.10.1"
     implementation "androidx.navigation:navigation-fragment:2.9.0"
     implementation "androidx.navigation:navigation-ui:2.9.0"
+
+    // Firebase Auth pulls reCAPTCHA transitively; pin a patched non-deprecated version
+    // (Play Console flags anything below 18.4.0 as a critical security issue).
+    implementation 'com.google.android.recaptcha:recaptcha:18.8.0'
 
     implementation ('org.jetbrains.kotlin:kotlin-stdlib:1.9.20') {
         exclude module: 'kotlin-stdlib-jdk8'

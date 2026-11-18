@@ -20,7 +20,9 @@ public class AdminMenu extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.admin_menu);
-        FirebaseApp.initializeApp(this);
+        if (FirebaseApp.getApps(this).isEmpty()) {
+            FirebaseApp.initializeApp(this);
+        }
 
         TextView systemInfoButton = findViewById(R.id.systemInfoButton);
         TextView appCheckButton = findViewById(R.id.appCheckButton);
