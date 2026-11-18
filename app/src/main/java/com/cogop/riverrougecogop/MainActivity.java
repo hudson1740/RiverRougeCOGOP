@@ -18,7 +18,6 @@ import android.os.Handler;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
 import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -46,13 +45,12 @@ import com.cogop.riverrougecogop.Settings.Settings;
 import com.cogop.riverrougecogop.adapter.MyCustomAdapter;
 import com.cogop.riverrougecogop.model.VideoDetails;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.firebase.FirebaseApp;
 import com.google.firebase.messaging.FirebaseMessaging;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserFactory;
 
+import java.io.StringReader;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -64,7 +62,8 @@ public class MainActivity extends AppCompatActivity {
     ListView listView;
     ArrayList<VideoDetails> videoDetailsArrayList;
     MyCustomAdapter myCustomAdapter;
-    String url = "https://www.google.com";
+    // Public channel Atom feed — no API key / quota / 403 from YouTube Data API.
+    String url = "https://www.youtube.com/feeds/videos.xml?channel_id=UCUhcJn2pYIyPa7Yp1AzKOkA";
     private TextView textView44;
     ImageView backButton;
     private View bottomBanner;
@@ -96,14 +95,8 @@ public class MainActivity extends AppCompatActivity {
     @SuppressLint("SetJavaScriptEnabled")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         setTheme(R.style.LightTheme);
-        this.supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
-        if (FirebaseApp.getApps(this).isEmpty()) {
-            FirebaseApp.initializeApp(this);
-        }
-        bottomBanner = findViewById(R.id.bottomBanner);
-
+        super.onCreate(savedInstanceState);
         // ---------- Asks user permission for notification permissions for push notification use -------- //
         int permissionState = ContextCompat.checkSelfPermission(this, android.Manifest.permission.POST_NOTIFICATIONS);
         // If the permission is not granted, request it.
@@ -123,6 +116,7 @@ public class MainActivity extends AppCompatActivity {
                     Log.d(TAG, "FCM Registration Token: " + token);
                 });
         setContentView(R.layout.nav_activity_main);
+        bottomBanner = findViewById(R.id.bottomBanner);
         textViewVerse = findViewById(R.id.textViewVerse);
         listView = findViewById(R.id.listview1);
         videoDetailsArrayList = new ArrayList<>();
@@ -199,40 +193,82 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
                 try {
-                    JSONObject jsonObject = new JSONObject(response);
-                    JSONArray jsonArray = jsonObject.getJSONArray("items");
-
-                    for (int i = 0; i < jsonArray.length(); i++) {
-                        JSONObject jsonObject1 = jsonArray.getJSONObject(i);
-                        JSONObject jsonVideoID = jsonObject1.getJSONObject("id");
-                        JSONObject jsonObjectSnippet = jsonObject1.getJSONObject("snippet");
-                        JSONObject jsonObjectDefault = jsonObjectSnippet.getJSONObject("thumbnails").getJSONObject("medium");
-
-                        String video_id = jsonVideoID.getString("videoId");
-
-                        VideoDetails vd = new VideoDetails();
-
-                        vd.setVideoId(video_id);
-                        vd.setTitle(jsonObjectSnippet.getString("title"));
-                        vd.setDescription(jsonObjectSnippet.getString("description"));
-                        vd.setUrl(jsonObjectDefault.getString("url"));
-
-                        videoDetailsArrayList.add(vd);
-                    }
+                    parseYoutubeFeed(response);
                     listView.setAdapter(myCustomAdapter);
                     myCustomAdapter.notifyDataSetChanged();
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
+                } catch (Exception e) {
+                    Log.e(TAG, "Failed to parse YouTube feed", e);
                 }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+                String message = error.getMessage();
+                if (message == null || message.trim().isEmpty()) {
+                    message = "Unable to load videos right now";
+                }
+                Log.e(TAG, "YouTube feed request failed: " + message, error);
+                Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
             }
         });
         requestQueue.add(stringRequest);
+    }
+
+    private void parseYoutubeFeed(String xml) throws Exception {
+        XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
+        factory.setNamespaceAware(true);
+        XmlPullParser parser = factory.newPullParser();
+        parser.setInput(new StringReader(xml));
+
+        VideoDetails current = null;
+        String text = "";
+        int loaded = 0;
+        int eventType = parser.getEventType();
+        while (eventType != XmlPullParser.END_DOCUMENT && loaded < 9) {
+            String name = parser.getName();
+            switch (eventType) {
+                case XmlPullParser.START_TAG:
+                    if ("entry".equals(name)) {
+                        current = new VideoDetails();
+                    } else if (current != null && "thumbnail".equals(name)) {
+                        String thumbUrl = parser.getAttributeValue(null, "url");
+                        if (thumbUrl != null) {
+                            current.setUrl(thumbUrl);
+                        }
+                    }
+                    break;
+                case XmlPullParser.TEXT:
+                    text = parser.getText();
+                    break;
+                case XmlPullParser.END_TAG:
+                    if (current == null) {
+                        break;
+                    }
+                    if ("videoId".equals(name)) {
+                        current.setVideoId(text);
+                    } else if ("title".equals(name) && current.getTitle() == null) {
+                        current.setTitle(text);
+                    } else if ("description".equals(name)) {
+                        current.setDescription(text != null ? text : "");
+                    } else if ("entry".equals(name)) {
+                        if (current.getVideoId() != null && current.getTitle() != null) {
+                            if (current.getDescription() == null) {
+                                current.setDescription("");
+                            }
+                            if (current.getUrl() == null || current.getUrl().isEmpty()) {
+                                current.setUrl("https://i.ytimg.com/vi/" + current.getVideoId() + "/hqdefault.jpg");
+                            }
+                            videoDetailsArrayList.add(current);
+                            loaded++;
+                        }
+                        current = null;
+                    }
+                    break;
+                default:
+                    break;
+            }
+            eventType = parser.next();
+        }
     }
 
     // Dashboard Button Actions ----------------------------------------------------------------------//

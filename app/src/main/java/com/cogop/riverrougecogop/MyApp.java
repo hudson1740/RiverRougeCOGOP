@@ -7,24 +7,14 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.google.firebase.FirebaseApp;
-import com.google.firebase.FirebaseOptions;
-
 public class MyApp extends Application {
 
     @Override
     public void onCreate() {
         super.onCreate();
-        String apiKey = ApiKey.MY_API_KEY;
-
-        // Initialize Firebase with the correct database URL
-        FirebaseOptions options = new FirebaseOptions.Builder()
-                .setApplicationId("com.cogop.riverrougecogop")
-                .setApiKey(apiKey)
-                .setDatabaseUrl("https://riverrougecogop-bbe78-default-rtdb.firebaseio.com")
-                .build();
-
-        FirebaseApp.initializeApp(this, options);
+        // Firebase is initialized automatically by FirebaseInitProvider via google-services.json.
+        // Do not call FirebaseApp.initializeApp() here — it crashes with
+        // "FirebaseApp name [DEFAULT] already exists!".
 
         registerActivityLifecycleCallbacks(new ActivityLifecycleCallbacks() {
             @Override
